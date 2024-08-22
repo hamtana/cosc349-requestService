@@ -2,3 +2,4 @@ rootProject.name = "assignment1";
 include "management-service";
 include "register-service";
 include "db";
+include "common";
