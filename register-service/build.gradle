@@ -9,8 +9,9 @@ application {
 }
 
 dependencies {
-		
-
+	
+        implementation project(":common");
+        
 	// jooby
 	implementation group: "io.jooby", name: "jooby-netty", version: joobyVer;
 	implementation group: "io.jooby", name: "jooby-gson", version: joobyVer;
