@@ -15,14 +15,12 @@ public class Manager {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Collection<Property> properties;
 
-    public Manager(String id, String firstName, String lastName, String phoneNumber, Collection<Property> properties) {
+    public Manager(String id, String firstName, String lastName, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.properties = properties;
     }
 
     public String getId() {
@@ -57,13 +55,5 @@ public class Manager {
         this.phoneNumber = phoneNumber;
     }
 
-    public Collection<Property> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(Collection<Property> properties) {
-        this.properties = properties;
-    }
-    
     
 }
