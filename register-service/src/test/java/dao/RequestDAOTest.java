@@ -33,7 +33,7 @@ public class RequestDAOTest {
         requestDAO = new RequestCollectionsDAO();
 
         manager = new Manager("0001", "Steve", "Jobs", "020321456");
-        tenant = new Tenant("0001", "John", "Doe", "020321456");
+        tenant = new Tenant("0001", "John", "Doe", "020321456", "john", "password");
         property = new Property("0001", "The White House", "12 North Rd", tenant, manager);
 
         request1 = new Request("0001", "Broken Toilet", "The toilet is broken", true, property, tenant, false);
