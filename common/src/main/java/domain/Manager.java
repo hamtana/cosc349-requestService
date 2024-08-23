@@ -5,6 +5,7 @@
 package domain;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -16,11 +17,14 @@ public class Manager {
     private String lastName;
     private String phoneNumber;
 
-    public Manager(String id, String firstName, String lastName, String phoneNumber) {
+    private List<PropertyManager> properties ;
+
+    public Manager(String id, String firstName, String lastName, String phoneNumber, List<PropertyManager> properties) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.properties = properties;
     }
 
     public String getId() {
@@ -54,6 +58,5 @@ public class Manager {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
     
 }
