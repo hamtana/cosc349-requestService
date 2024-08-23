@@ -58,5 +58,12 @@ public class Manager {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
+
+    public List<PropertyManager> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<PropertyManager> properties) {
+        this.properties = properties;
+    }
 }

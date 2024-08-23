@@ -2,11 +2,14 @@ package dao;
 
 import domain.Manager;
 import domain.Property;
+import domain.PropertyManager;
 import domain.Request;
 import domain.Tenant;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -24,13 +27,14 @@ public class RequestDAOTest {
     private Tenant tenant;
     private Property property;
     private Manager manager;
+    private PropertyManager propertyManager;
 
     @BeforeEach
     void setUp() {
         requestDAO = new RequestCollectionsDAO();
         manager = new Manager("0001", "Steve", "Jobs", "020321456");
-        tenant = new Tenant("0001", "John", "Doe", "020321456" );
-        property = new Property("0001", "The White House", manager, tenant);
+        tenant = new Tenant("0001", "John", "Doe", "020321456");
+        property = new Property("0001", "The White House", "12 North Rd", tenant);
 
         request1 = new Request("0001", "Broken Toilet", "The toilet is broken", true, property, tenant, false);
         request2 = new Request("0002", "Broken Window", "The window is broken", false, property, tenant, false);
