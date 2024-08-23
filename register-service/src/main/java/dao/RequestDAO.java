@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author hamishp
  */
-public interface RegisterDAO {
+public interface RequestDAO {
 
     List<Request> getAllRequests();
 
