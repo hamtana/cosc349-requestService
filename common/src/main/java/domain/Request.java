@@ -18,7 +18,7 @@ public class Request {
     private Tenant tenant; 
     private Boolean completed;
 
-    public Request(String id, String name, String description, Boolean urgent, Property property, Tenant tenant, Boolean completed) {
+    public Request(String id, String name, String description, boolean urgent, Property property, Tenant tenant, boolean completed) {
         this.id = id;
         this.name = name;
         this.description = description;
