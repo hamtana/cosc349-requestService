@@ -20,7 +20,7 @@ import java.util.List;
 public class RequestCollectionsDAO implements RequestDAO {
 
     private static final HashMap<String, Request> requests = new HashMap<String, Request>();
-    private static final HashMap<String, Request> requestsByTenant = new HashMap<>();
+    private static final Multimap<String, Request> requestsByTenant = HashMultimap.create();
 
     @Override
     public List<Request> getAllRequests(){
@@ -47,7 +47,7 @@ public class RequestCollectionsDAO implements RequestDAO {
     @Override
     public void deleteRequest(Request request) {
         requests.remove(request.getId());
-        requestsByTenant.remove(request.getTenant().getId());
+        requestsByTenant.remove(request.getTenant().getId(), request);
     }
 
 
