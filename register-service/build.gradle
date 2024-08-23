@@ -24,6 +24,14 @@ dependencies {
 	// guava
 	implementation group: "com.google.guava", name: "guava", version: guavaVer;
 	
+	// Database 
+	def jdbiVer = "3.40.0"
+	implementation group: "org.jdbi", name: "jdbi3-core", version: jdbiVer;
+	implementation group: "org.jdbi", name: "jdbi3-sqlobject", version: jdbiVer;
+
+	testImplementation group: "org.hamcrest", name: "hamcrest", version: "2.2";
+	testImplementation group: "org.mockito", name: "mockito-core", version: "4.6.1";
+	testImplementation group: "org.assertj", name: "assertj-swing", version: "3.17.1";
 	
 	//** testing ** //
 	
