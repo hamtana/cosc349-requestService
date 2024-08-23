@@ -7,6 +7,7 @@ package dao;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import domain.Request;
+import org.checkerframework.checker.interning.qual.EqualsMethod;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,9 +45,9 @@ public class RequestCollectionsDAO implements RequestDAO {
     }
 
     @Override
-    public void delete(String id) {
-        requests.remove(id);
-        requestsByTenant.remove(requests.get(id).getTenant().getId());
+    public void delete(Request request) {
+        requests.remove(request.getId());
+        requestsByTenant.remove(request.getTenant().getId());
     }
 
 
