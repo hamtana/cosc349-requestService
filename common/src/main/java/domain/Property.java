@@ -15,13 +15,13 @@ public class Property {
     private String id;
     private String name;
     private Manager manager;
-    private Collection<Tenant> tenants;
+    private Tenant tenant;
 
-    public Property(String id, String name, Manager manager, Collection<Tenant> tenants) {
+    public Property(String id, String name, Manager manager, Tenant tenant) {
         this.id = id;
         this.name = name;
         this.manager = manager;
-        this.tenants = tenants;
+        this.tenant = tenant;
     }
 
     public String getId() {
@@ -48,14 +48,17 @@ public class Property {
         this.manager = manager;
     }
 
-    public Collection<Tenant> getTenants() {
-        return tenants;
+    public Tenant getTenant() {
+        return tenant;
     }
 
-    public void setTenants(Collection<Tenant> tenants) {
-        this.tenants = tenants;
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
     }
-    
+
+
+
+
     
     
 }

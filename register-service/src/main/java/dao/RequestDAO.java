@@ -21,6 +21,6 @@ public interface RequestDAO {
 
     void updateRequest(Request request);
 
-    void delete(String id);
+    void deleteRequest(Request request);
 
 }
