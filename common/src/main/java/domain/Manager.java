@@ -17,14 +17,11 @@ public class Manager {
     private String lastName;
     private String phoneNumber;
 
-    private List<PropertyManager> properties ;
-
-    public Manager(String id, String firstName, String lastName, String phoneNumber, List<PropertyManager> properties) {
+    public Manager(String id, String firstName, String lastName, String phoneNumber) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.properties = properties;
     }
 
     public String getId() {
@@ -59,11 +56,4 @@ public class Manager {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<PropertyManager> getProperties() {
-        return properties;
-    }
-
-    public void setProperties(List<PropertyManager> properties) {
-        this.properties = properties;
-    }
 }

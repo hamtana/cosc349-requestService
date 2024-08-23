@@ -16,12 +16,14 @@ public class Property {
     private String name;
     private String address;
     private Tenant tenant;
+    private Manager manager;
 
-    public Property(String id, String name, String address, Tenant tenant) {
+    public Property(String id, String name, String address, Tenant tenant, Manager manager) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.tenant = tenant;
+        this.manager = manager;
     }
 
     public String getId() {
@@ -55,6 +57,14 @@ public class Property {
     public void setTenant(Tenant tenant) {
         this.tenant = tenant;
     }
-    
-    
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+
 }
