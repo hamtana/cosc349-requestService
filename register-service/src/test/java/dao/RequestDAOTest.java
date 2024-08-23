@@ -8,10 +8,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 public class RequestDAOTest {
@@ -46,10 +45,10 @@ public class RequestDAOTest {
 
     @AfterEach
     void tearDown() {
-        requestDAO.delete(request1);
-        requestDAO.delete(request2);
-        requestDAO.delete(request3);
-        requestDAO.delete(request4);
+        requestDAO.deleteRequest(request1);
+        requestDAO.deleteRequest(request2);
+        requestDAO.deleteRequest(request3);
+        requestDAO.deleteRequest(request4);
     }
 
     @Test
@@ -65,17 +64,33 @@ public class RequestDAOTest {
 
     @Test
     void getRequestById() {
+        fail("This test has not been implemented yet");
     }
 
     @Test
     void createRequest() {
+        fail("This test has not been implemented yet");
     }
 
     @Test
     void updateRequest() {
+        fail("This test has not been implemented yet");
     }
 
     @Test
-    void delete() {
+    void deleteRequest() {
+
+        //First check the request to be deleted is within the DAO
+        assertThat(requestDAO.getAllRequests(), hasItem(request1));
+        assertThat(requestDAO.getAllRequests(), hasSize(3)); //size should be 3
+
+        //Delete the request #1
+
+        requestDAO.deleteRequest(request1);
+        assertThat(requestDAO.getAllRequests(), not(hasItem(request1)));
+
+        //check the delete method did not delete everything
+        assertThat(requestDAO.getAllRequests(), hasSize(2)); //size should be 2
+
     }
 }

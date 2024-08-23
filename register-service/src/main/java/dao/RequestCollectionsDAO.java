@@ -45,7 +45,7 @@ public class RequestCollectionsDAO implements RequestDAO {
     }
 
     @Override
-    public void delete(Request request) {
+    public void deleteRequest(Request request) {
         requests.remove(request.getId());
         requestsByTenant.remove(request.getTenant().getId());
     }
