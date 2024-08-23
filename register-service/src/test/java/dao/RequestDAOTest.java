@@ -64,17 +64,44 @@ public class RequestDAOTest {
 
     @Test
     void getRequestById() {
-        fail("This test has not been implemented yet");
+
+        //Check that the following ids are included in the system
+        assertThat(requestDAO.getRequestById("0001"), is(request1));
+        assertThat(requestDAO.getRequestById("0002"), is(request2));
+
+        //Check that no ids have been overwritten
+        assertThat(requestDAO.getRequestById("0001"), is(not(request2)));
+        assertThat(requestDAO.getRequestById("0002"), is(not(request1)));
+
     }
 
     @Test
     void createRequest() {
-        fail("This test has not been implemented yet");
+        //First check that the request added does not exist
+        assertThat(requestDAO.getAllRequests(), not(hasItem(request4)));
+        assertThat(requestDAO.getAllRequests(), hasSize(3)); //size should be 3
+
+        //Add the request
+        requestDAO.createRequest(request4);
+        assertThat(requestDAO.getAllRequests(), hasItem(request4));
+        assertThat(requestDAO.getAllRequests(), hasSize(4)); //size should be 4
     }
 
     @Test
     void updateRequest() {
-        fail("This test has not been implemented yet");
+        //First check that the request added does not exist
+        assertThat(requestDAO.getAllRequests(), not(hasItem(request4)));
+        assertThat(requestDAO.getAllRequests(), hasSize(3)); //size should be 3
+
+        //Add the request
+        requestDAO.createRequest(request4);
+        assertThat(requestDAO.getAllRequests(), hasItem(request4));
+        assertThat(requestDAO.getAllRequests(), hasSize(4)); //size should be 4
+
+        //Update the request
+        request4.setName("New Name");
+        requestDAO.updateRequest(request4);
+        assertThat(requestDAO.getRequestById("0004").getName(), is("New Name"));
     }
 
     @Test
