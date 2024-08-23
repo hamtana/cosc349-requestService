@@ -106,7 +106,7 @@ components:
       x-stoplight:
         id: spkjohz0ku0ic
       type: object
-      description: 'A Request object, containing the id, name, description and urgency. '
+      description: 'A Request object, containing the id, name, description and urgency.'
       properties:
         id:
           type: string
@@ -163,20 +163,15 @@ components:
           $ref: '#/components/schemas/Manager'
           x-stoplight:
             id: 42l0zjllsd2tl
-        tenants:
-          type: array
+        tenant:
+          $ref: '#/components/schemas/Tenant'
           x-stoplight:
-            id: 1nj7q9v22vtsa
-          items:
-            $ref: '#/components/schemas/Tenant'
-            x-stoplight:
-              id: y1b4i85hxq89b
+            id: wkinb1rgxnojh
       required:
         - id
         - name
         - address
         - manager
-        - tenants
     Manager:
       title: Manager
       x-stoplight:
@@ -198,14 +193,10 @@ components:
           type: string
           x-stoplight:
             id: du6j8s4x9uefa
-        properties:
+        property:
+          $ref: '#/components/schemas/Property'
           x-stoplight:
             id: 4dzy9vexlv7au
-          type: array
-          items:
-            $ref: '#/components/schemas/Property'
-            x-stoplight:
-              id: 8ej5vv95cjily
     Tenant:
       title: Tenant
       x-stoplight:
@@ -227,9 +218,5 @@ components:
           type: string
           x-stoplight:
             id: i017ykydwmay2
-        property:
-          $ref: '#/components/schemas/Property'
-          x-stoplight:
-            id: gdzb7efxxzamj
 tags:
   - name: request
