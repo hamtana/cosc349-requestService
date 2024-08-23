@@ -6,6 +6,7 @@ build/
 bin/
 dist/
 tmp/
+.idea/
 .classpath
 .project
 *.zip
