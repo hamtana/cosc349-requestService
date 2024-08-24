@@ -18,4 +18,4 @@ EXPOSE 8080
 # Shift to the Request Service Directory
 WORKDIR /app/request-service
 # Run the Service
-RUN ./gradlew run
+CMD ["./gradlew", "run"]
