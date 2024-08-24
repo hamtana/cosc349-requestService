@@ -22,6 +22,8 @@ public class Server extends Jooby {
             ctx.getRouter().getLog().error(cause.getMessage(), cause);
             ctx.send("Server error: " + cause.getMessage());
         });
+        
+        mount(new StaticAssetModule());
 
 
     }
