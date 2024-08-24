@@ -28,4 +28,5 @@ services:
       DB_PASSWORD: admin
       DB_NAME: cosc349_database
 
-
+volumes:
+  postgres_data:  # This defines the postgres_data volume
