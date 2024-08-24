@@ -17,6 +17,11 @@ public class Server extends Jooby {
         install(new GsonModule());
         mount(new TenantModule(tenantDAO));
 
+        error(StatusCode.SERVER_ERROR, (ctx, cause, code) -> {
+            ctx.getRouter().getLog().error(cause.getMessage(), cause);
+            ctx.send("Server error: " + cause.getMessage());
+        });
+
 
     }
 
