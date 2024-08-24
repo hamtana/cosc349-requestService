@@ -6,7 +6,10 @@ package dao;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import domain.Manager;
+import domain.Property;
 import domain.Request;
+import domain.Tenant;
 import org.checkerframework.checker.interning.qual.EqualsMethod;
 
 import java.util.ArrayList;
@@ -23,15 +26,26 @@ public class RequestCollectionsDAO implements RequestDAO {
     private static final Multimap<String, Request> requestsByTenant = HashMultimap.create();
 
     //Test data to check if it visible on the website.
-    @SuppressWarnings("OverridableMethodCallInContructor")
+    @SuppressWarnings("OverridableMethodCallInConstructor")
     public RequestCollectionsDAO(){
         if(requests.isEmpty()){
 
+            //Make four dummy tenants
+            Tenant tenant = new Tenant("0001", "John", "Doe", "020321456", "john", "password");
+            Tenant tenant2 = new Tenant("0002", "Jane", "Doe", "020321456", "jane", "password");
+
+            //Make a manager
+            Manager manager = new Manager("0001", "Steve", "Jobs", "020321456");
+
+            //Nake 2 properties
+            Property property = new Property("0001", "The White House", "12 North Rd", tenant, manager);
+            Property property2 = new Property("0002", "The White House", "12 North Rd", tenant2, manager);
+
             //Create some dummy data
-            Request request1 = new Request("0001", "Broken Toilet", "The toilet is broken", true, null, null, false);
-            Request request2 = new Request("0002", "Broken Window", "The window is broken", false, null, null, false);
-            Request request3 = new Request("0003", "Broken Door", "The door is broken", true, null, null, false);
-            Request request4 = new Request("0004", "Broken Roof", "The roof is broken", false, null, null, false);
+            Request request1 = new Request("0001", "Broken Toilet", "The toilet is broken", true, property , tenant, false);
+            Request request2 = new Request("0002", "Broken Window", "The window is broken", false,property , tenant, false);
+            Request request3 = new Request("0003", "Broken Door", "The door is broken", true, property, tenant, false);
+            Request request4 = new Request("0004", "Broken Roof", "The roof is broken", false, property2, tenant2, false);
 
             requests.put(request1.getId(), request1);
             requests.put(request2.getId(), request2);

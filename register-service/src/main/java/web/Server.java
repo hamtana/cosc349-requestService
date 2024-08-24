@@ -4,6 +4,7 @@ import dao.DAOFactory;
 import dao.RequestDAO;
 import dao.TenantDAO;
 import io.jooby.Jooby;
+import io.jooby.ServerOptions;
 import io.jooby.gson.GsonModule;
 import io.jooby.StatusCode;
 import java.nio.file.Paths;
@@ -23,6 +24,13 @@ public class Server extends Jooby {
         });
 
 
+    }
+
+    public static void main(String [] args){
+        System.out.println("\nStarting Server...");
+        new Server()
+                .setServerOptions(new ServerOptions().setPort(8080))
+                .start();
     }
 
 
