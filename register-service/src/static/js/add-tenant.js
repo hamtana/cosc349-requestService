@@ -21,7 +21,7 @@ const app = Vue.createApp({
         addTenant() {
             axios.post('/api/tenants', this.tenant)
                 .then(response => {
-                    window.location.href = 'view-property.html';
+                    window.location.href = 'view-requests.html';
                 })
                 .catch(error => {
                     console.log(error);
