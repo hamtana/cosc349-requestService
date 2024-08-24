@@ -30,6 +30,7 @@ dependencies {
 	def jdbiVer = "3.40.0"
 	implementation group: "org.jdbi", name: "jdbi3-core", version: jdbiVer;
 	implementation group: "org.jdbi", name: "jdbi3-sqlobject", version: jdbiVer;
+	implementation group: "com.zaxxer", name: "HikariCP", version: "5.0.1";
 		implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
 
 	//** testing ** //
