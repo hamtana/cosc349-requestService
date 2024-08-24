@@ -16,7 +16,8 @@ services:
   request-service:
     container_name : request-service
     build:
-      context: ./request-service
+      context: .
+      dockerfile: ./request-service/Dockerfile
     depends_on:
         - db
     ports:

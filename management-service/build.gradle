@@ -2,7 +2,7 @@ plugins {
 	id "application";
 }
 
-def defaultMainClassName = "service.SalesService";
+def defaultMainClassName = "web.Server";
 
 application {
 	mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : defaultMainClassName;
