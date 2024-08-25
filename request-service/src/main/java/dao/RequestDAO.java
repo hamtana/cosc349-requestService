@@ -5,6 +5,8 @@
 package dao;
 
 import domain.Request;
+
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public interface RequestDAO {
 
-    List<Request> getAllRequests();
+    Collection<Request> getAllRequests();
 
     Request getRequestById(String id);
 

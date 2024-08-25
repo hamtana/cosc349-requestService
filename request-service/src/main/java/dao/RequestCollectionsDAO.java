@@ -13,6 +13,7 @@ import domain.Tenant;
 import org.checkerframework.checker.interning.qual.EqualsMethod;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class RequestCollectionsDAO implements RequestDAO {
     }
 
     @Override
-    public List<Request> getAllRequests(){
+    public Collection<Request> getAllRequests(){
         return new ArrayList<Request>(requests.values());
     }
 
