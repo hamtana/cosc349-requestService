@@ -10,7 +10,7 @@ public interface TenantDAO {
      * Check if an existing username and password matches a tenant
      * @return Boolean true or flase, if values are matching or non-matching.
      */
-    boolean checkTenantUsernaamePassword(String username, String password, Tenant tenant);
+    boolean checkTenantUsernamePassword(String username, String password, Tenant tenant);
 
     /**
      * Method to get all tenants, primarily for testing

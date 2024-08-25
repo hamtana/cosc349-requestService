@@ -47,11 +47,11 @@ class TenantDAOTest {
         String password = "password";
 
         //Run the check username and password method, with correct information.
-        assertThat(tenantDAO.checkTenantUsernaamePassword(username, password, tenant1), is(true));
+        assertThat(tenantDAO.checkTenantUsernamePassword(username, password, tenant1), is(true));
 
         //Run the check username and password method, with incorrect information.
-        assertThat(tenantDAO.checkTenantUsernaamePassword(username, "wrongpassword", tenant1), is(false));
-        assertThat(tenantDAO.checkTenantUsernaamePassword("wrongusername", password, tenant1), is(false));
+        assertThat(tenantDAO.checkTenantUsernamePassword(username, "wrongpassword", tenant1), is(false));
+        assertThat(tenantDAO.checkTenantUsernamePassword("wrongusername", password, tenant1), is(false));
 
 
     }

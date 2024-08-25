@@ -11,7 +11,7 @@ public class TenantCollectionsDAO implements TenantDAO{
     private static final Map<String, Tenant> tenants = new HashMap<>();
 
     @Override
-    public boolean checkTenantUsernaamePassword(String username, String password, Tenant tenant) {
+    public boolean checkTenantUsernamePassword(String username, String password, Tenant tenant) {
         return tenant.getUsername().equals(username) && tenant.getPassword().equals(password);
     }
 
