@@ -56,6 +56,10 @@ test {
 	onlyIf { project.gradle.startParameter.taskNames.contains("test") };
 }
 
+run {
+	standardInput = System.in;
+}
+
 sourceSets {
 	"static" {
 		resources {

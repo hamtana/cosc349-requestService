@@ -1,34 +1,67 @@
-FROM openjdk:19-alpine
+FROM gradle:8-jdk-21-and-22-jammy AS build
 
-# Install bash and dos2unix for line ending conversions
-RUN apk update && apk add bash dos2unix
+USER root
 
-# Set the working directory
 WORKDIR /app
 
-# Copy the Common Directory
-COPY ../common /app/common
+# Install bash and dos2unix for line ending conversions
+RUN \
+    apt-get update \
+    && apt-get install -y bash dos2unix \
+    && apt-get install --yes --no-install-recommends git \
+    && rm --recursive --force /var/lib/apt/lists/*
 
-# Copy the Request Service Directory
-COPY . .
+# run remainder of tasks as the unprivileged 'gradle' user
+#USER gradle
+
+# Copy Required Directories
+COPY ../common /app/common
+COPY ../build.gradle ./
+COPY  ../settings.gradle ./
+COPY ../request-service /app/request-service
 
 # Shift to the Request Service Directory
 WORKDIR /app/request-service
 
-# DEBUG - List the contents of the directory
-RUN ls -la
+# add a volume for Gradle home
+VOLUME "/home/gradle/.gradle"
 
-# Ensure the gradlew script has correct permissions
-RUN chmod +x gradlew
-
-# Fix line endings in gradlew script
-RUN dos2unix gradlew
+## Ensure the gradlew script has correct permissions
+#RUN chmod +x gradlew
+#
+## Fix line endings in gradlew script
+#RUN dos2unix gradlew
 
 # Build the project using bash
-RUN bash ./gradlew build --no-daemon
+#RUN bash ./gradlew -Dorg.gradle.welcome=never --no-daemon build
 
-# Expose the service on 8080
-EXPOSE 8080
+# Build the project using gradle command
+RUN gradle -Dorg.gradle.welcome=never --no-daemon installDist
+
+
+### RUN THE PROJECT ###
+FROM eclipse-temurin:21-jre-jammy
+
+# copy the Gradle build output from the build stage
+COPY --from=build /app/request-service/build/install/request-service /home/deployment
+COPY --from=build /app/request-service/static /home/deployment/static
+
+RUN ls -l /home/deployment/static
+
+
+# Copy the built JAR from the build stage - cop
+#COPY --from=build /app/request-service /app
+#COPY --from=build /app/common /app
+#WORKDIR /app/request-service
+
+# switch into the stand-alone service folder
+WORKDIR /home/deployment
+
+# limit the Java heap size
+ENV \
+	_JAVA_OPTIONS=-Xmx256M
 
 # Run the Service
-CMD ["bash","./gradlew", "run"]
+#CMD ["./gradlew", "-Dorg.gradle.welcome=never", "--no-daemon", "run"]
+CMD ["bin/request-service"]
+

@@ -1,5 +1,4 @@
--- Allow literals
-SET ALLOW_LITERALS ALL;
+
 
 -- Create Table for the Manager Class
 CREATE TABLE IF NOT EXISTS Manager (
@@ -44,5 +43,4 @@ CREATE TABLE IF NOT EXISTS Request (
     CONSTRAINT FK_TenantUsername FOREIGN KEY (tenant_username) REFERENCES Tenant(username)
 );
 
--- Disallow literals
-SET ALLOW_LITERALS NONE;
+
