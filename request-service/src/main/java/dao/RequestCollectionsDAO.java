@@ -32,11 +32,11 @@ public class RequestCollectionsDAO implements RequestDAO {
         if(requests.isEmpty()){
 
             //Make four dummy tenants
-            Tenant tenant = new Tenant("0001", "John", "Doe", "020321456", "john", "password");
-            Tenant tenant2 = new Tenant("0002", "Jane", "Doe", "020321456", "jane", "password");
+            Tenant tenant = new Tenant( "John", "Doe", "020321456", "john", "password");
+            Tenant tenant2 = new Tenant("Jane", "Doe", "020321456", "jane", "password");
 
             //Make a manager
-            Manager manager = new Manager("0001", "Steve", "Jobs", "020321456", "steve", "password");
+            Manager manager = new Manager("Steve", "Jobs", "020321456", "steve", "password");
 
             //Nake 2 properties
             Property property = new Property("0001", "The White House", "12 North Rd", tenant, manager);
@@ -53,10 +53,10 @@ public class RequestCollectionsDAO implements RequestDAO {
             requests.put(request3.getId(), request3);
             requests.put(request4.getId(), request4);
 
-            requestsByTenant.put(request1.getTenant().getId(), request1);
-            requestsByTenant.put(request2.getTenant().getId(), request2);
-            requestsByTenant.put(request3.getTenant().getId(), request3);
-            requestsByTenant.put(request4.getTenant().getId(), request4);
+            requestsByTenant.put(request1.getTenant().getUsername(), request1);
+            requestsByTenant.put(request2.getTenant().getUsername(), request2);
+            requestsByTenant.put(request3.getTenant().getUsername(), request3);
+            requestsByTenant.put(request4.getTenant().getUsername(), request4);
 
         }
 
@@ -75,19 +75,19 @@ public class RequestCollectionsDAO implements RequestDAO {
     @Override
     public void createRequest(Request request){
         requests.put(request.getId(), request);
-        requestsByTenant.put(request.getTenant().getId(), request);
+        requestsByTenant.put(request.getTenant().getUsername(), request);
     }
 
    @Override
    public void updateRequest(Request request){
         requests.put(request.getId(), request);
-        requestsByTenant.put(request.getTenant().getId(), request);
+        requestsByTenant.put(request.getTenant().getUsername(), request);
     }
 
     @Override
     public void deleteRequest(Request request) {
         requests.remove(request.getId());
-        requestsByTenant.remove(request.getTenant().getId(), request);
+        requestsByTenant.remove(request.getTenant().getUsername(), request);
     }
 
 

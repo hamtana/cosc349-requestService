@@ -19,9 +19,9 @@ class TenantDAOTest {
     void setUp() {
 
         tenantDAO = new TenantCollectionsDAO();
-        tenant1 = new Tenant("0001", "John", "Doe", "020321456", "john", "password");
-        tenant2 = new Tenant("0002", "Jane", "Doe", "020321456", "jane", "password");
-        tenant3 = new Tenant("0003", "Jack", "Doe", "020321456", "jack", "password");
+        tenant1 = new Tenant("John", "Doe", "020321456", "john", "password");
+        tenant2 = new Tenant("Jane", "Doe", "020321456", "jane", "password");
+        tenant3 = new Tenant("Jack", "Doe", "020321456", "jack", "password");
 
         tenantDAO.saveTenant(tenant1);
         tenantDAO.saveTenant(tenant2);

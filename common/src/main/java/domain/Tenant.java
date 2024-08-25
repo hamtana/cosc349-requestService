@@ -9,28 +9,18 @@ package domain;
  * @author hamishp
  */
 public class Tenant {
-    private String id; 
     private String firstName;
     private String lastName; 
     private String phoneNumber;
     private String username;
     private String password;
 
-    public Tenant(String id, String firstName, String lastName, String phoneNumber, String username, String password) {
-        this.id = id;
+    public Tenant(String firstName, String lastName, String phoneNumber, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getFirstName() {
