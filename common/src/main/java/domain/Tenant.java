@@ -4,6 +4,8 @@
  */
 package domain;
 
+import java.util.Objects;
+
 /**
  *
  * @author hamishp
@@ -14,6 +16,9 @@ public class Tenant {
     private String phoneNumber;
     private String username;
     private String password;
+
+    public Tenant() {
+    }
 
     public Tenant(String firstName, String lastName, String phoneNumber, String username, String password) {
         this.firstName = firstName;
@@ -62,4 +67,28 @@ public class Tenant {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.username);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tenant other = (Tenant) obj;
+        return Objects.equals(this.username, other.username);
+    }
+    
+    
 }

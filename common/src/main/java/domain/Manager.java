@@ -5,6 +5,7 @@
 package domain;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  *
@@ -64,4 +65,29 @@ public class Manager {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.username);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Manager other = (Manager) obj;
+        return Objects.equals(this.username, other.username);
+    }
+    
+    
+    
 }

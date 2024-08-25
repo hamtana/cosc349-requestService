@@ -2,6 +2,7 @@ package dao;
 
 import domain.Tenant;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,10 +16,17 @@ class TenantDAOTest {
     private Tenant tenant2;
     private Tenant tenant3;
 
+    @BeforeAll
+    public static void initialise() {
+        JdbiDAOFactory.setJdbcUri("jdbc:postgresql://localhost:1244/tests");
+    }
+
     @BeforeEach
     void setUp() {
 
-        tenantDAO = new TenantCollectionsDAO();
+//      tenantDAO = new TenantCollectionsDAO();
+        tenantDAO = JdbiDAOFactory.getTenantDAO();
+
         tenant1 = new Tenant("John", "Doe", "020321456", "john", "password");
         tenant2 = new Tenant("Jane", "Doe", "020321456", "jane", "password");
         tenant3 = new Tenant("Jack", "Doe", "020321456", "jack", "password");
