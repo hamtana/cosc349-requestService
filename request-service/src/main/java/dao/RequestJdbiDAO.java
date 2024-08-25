@@ -38,3 +38,4 @@ public interface RequestJdbiDAO extends RequestDAO{
     @SqlUpdate("DELETE FROM Request WHERE id = :id")
     public void deleteRequest(@BindBean Request request);
 }
+
