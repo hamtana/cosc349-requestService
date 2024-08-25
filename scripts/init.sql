@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS Manager (
     lastName VARCHAR(50),
     phoneNumber VARCHAR(10),
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50)
+    password VARCHAR(255)
 );
 
 -- Create Table for the Tenant Class
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Tenant (
     lastName VARCHAR(50),
     phoneNumber VARCHAR(10),
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50)
+    password VARCHAR(255)
 );
 
 -- Create Table for the Property Class

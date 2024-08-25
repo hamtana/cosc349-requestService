@@ -1,6 +1,7 @@
 package dao;
 
 import domain.Tenant;
+import helpers.Argon2Helper;
 import helpers.ScryptHelper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
@@ -12,17 +13,25 @@ import java.util.Collection;
 
 public interface TenantJdbiDAO extends TenantDAO {
 
-    @Override
-    @SqlQuery("SELECT EXISTS (SELECT * FROM Tenant "
-            + "WHERE Username = :username AND Password = :password)")
-    public boolean checkTenantUsernamePassword(@Bind("username") String username, @Bind("password") String password, Tenant tenant);
+//    @Override
+//    @SqlQuery("SELECT EXISTS (SELECT * FROM Tenant "
+//            + "WHERE Username = :username AND Password = :password)")
+//    public boolean checkTenantUsernamePassword(@Bind("username") String username, @Bind("password") String password, Tenant tenant);
 
-//    @Override - does not work check with Mark this week??
-//    default boolean checkTenantUsernamePassword(String username, String password, Tenant tenant){
-//        String hash = getTenantByUsername(username).getPassword();
-//        // check the hash against the hash version of the password, the cust provided.
-//        return ScryptHelper.check(hash, password);
-//    }
+    @Override
+    default boolean checkTenantUsernamePassword(String username, String password, Tenant tenant) {
+        // Fetch tenant by username
+        Tenant storedTenant = getTenantByUsername(username);
+        if (storedTenant == null) {
+            return false; // Username does not exist
+        }
+
+        // Retrieve the hashed password from the stored tenant
+        String hashedPassword = storedTenant.getPassword();
+
+        // Verify the provided password with the hashed password
+        return Argon2Helper.verifyPassword(hashedPassword, password);
+    }
 
     @Override
     @SqlQuery("SELECT * FROM Tenant ORDER BY username")
@@ -34,9 +43,20 @@ public interface TenantJdbiDAO extends TenantDAO {
     public void removeTenant(@BindBean Tenant tenant);
 
     @Override
+    default void saveTenant(Tenant tenant) {
+        // Hash the password before saving the tenant
+        String hashedPassword = Argon2Helper.hashPassword(tenant.getPassword());
+
+        // Update the tenant's password with the hashed version
+        tenant.setPassword(hashedPassword);
+
+        // Proceed with saving the tenant (the @SqlUpdate method will be used for this)
+        insertTenant(tenant);
+    }
+
     @SqlUpdate("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) " +
             "VALUES(:firstName, :lastName, :phoneNumber, :username, :password)")
-    public void saveTenant(@BindBean Tenant tenant);
+    void insertTenant(@BindBean Tenant tenant);
 
     @Override
     @SqlQuery("SELECT * FROM Tenant WHERE username = :username")
