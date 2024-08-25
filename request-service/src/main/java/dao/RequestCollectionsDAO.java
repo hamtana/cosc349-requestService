@@ -35,7 +35,7 @@ public class RequestCollectionsDAO implements RequestDAO {
             Tenant tenant2 = new Tenant("0002", "Jane", "Doe", "020321456", "jane", "password");
 
             //Make a manager
-            Manager manager = new Manager("0001", "Steve", "Jobs", "020321456");
+            Manager manager = new Manager("0001", "Steve", "Jobs", "020321456", "steve", "password");
 
             //Nake 2 properties
             Property property = new Property("0001", "The White House", "12 North Rd", tenant, manager);

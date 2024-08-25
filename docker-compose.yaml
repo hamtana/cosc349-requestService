@@ -12,6 +12,8 @@ services:
       - "1234:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data # Persist data even after container is removed
+      - ./scripts:/docker-entrypoint-initdb.d/ # Mount the database script
+
 
   request-service:
     container_name : request-service

@@ -25,7 +25,7 @@ RUN chmod +x gradlew
 RUN dos2unix gradlew
 
 # Build the project using bash
-RUN bash ./gradlew build
+RUN bash ./gradlew build --no-daemon
 
 # Expose the service on 8080
 EXPOSE 8080

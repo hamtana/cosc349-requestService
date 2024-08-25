@@ -5,23 +5,26 @@
 package domain;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  *
  * @author hamishp
  */
 public class Manager {
-    private String id; 
+    private String id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private String username;
+    private String password;
 
-    public Manager(String id, String firstName, String lastName, String phoneNumber) {
+    public Manager(String id, String firstName, String lastName, String phoneNumber, String username, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
     }
 
     public String getId() {
@@ -56,4 +59,19 @@ public class Manager {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
