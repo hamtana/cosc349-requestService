@@ -1,5 +1,5 @@
 -- Allow literals
-SET ALLOW_LITERALS ALL;
+--SET ALLOW_LITERALS ALL;
 
 -- Create Table for the Manager Class
 CREATE TABLE IF NOT EXISTS Manager (
@@ -45,4 +45,4 @@ CREATE TABLE IF NOT EXISTS Request (
 );
 
 -- Disallow literals
-SET ALLOW_LITERALS NONE;
+--SET ALLOW_LITERALS NONE;
