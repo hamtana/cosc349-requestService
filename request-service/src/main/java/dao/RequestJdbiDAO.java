@@ -12,30 +12,24 @@ import java.util.Collection;
 
 public interface RequestJdbiDAO extends RequestDAO{
 
-    @Override
     @SqlQuery("SELECT * FROM Request ORDER BY id")
     @RegisterBeanMapper(Request.class)
     public Collection<Request> getAllRequests();
 
-    @Override
-    @SqlQuery("SELECT * FROM Request WHERE id = :id")
+    @SqlQuery("SELECT * FROM Request WHERE tenant_username = :tenant")
     @RegisterBeanMapper(Request.class)
-    public Request getRequestById(@Bind("id") String id);
+    public Request getRequestByTenant(@Bind("tenant") String username);
 
-    @Override
-    @SqlUpdate("INSERT INTO Request (id, name, description, urgent, property_address, tenant_username, completed) " +
-            "VALUES(:id, :name, :description, :urgent, :property.address, :tenant.username, :completed)")
-    @GetGeneratedKeys
-    public void createRequest(@BindBean Request request);
 
-    @Override
-    @SqlUpdate("INSERT INTO Request (id, name, description, urgent, property_address, tenant_username, completed) " +
-            "VALUES(:id, :name, :description, :urgent, :property.address, :tenant.username, :completed)")
-    @GetGeneratedKeys
+    @SqlUpdate("INSERT INTO Request (id, name, description, urgent, tenant_username, completed) " +
+            "VALUES(:id, :name, :description, :urgent, :tenant.username, :completed)")
+    Integer createRequest(@BindBean Request request);
+
+
+    @SqlUpdate("UPDATE Request SET name = :name, description = :description, urgent = :urgent, " +
+            "tenant_username = :tenant.username, completed = :completed WHERE id = :id")
     public void updateRequest(@BindBean Request request);
 
-    @Override
-    @SqlUpdate("DELETE FROM Request WHERE id = :id")
-    public void deleteRequest(@BindBean Request request);
+    public void deleteRequest(Request request);
 }
 

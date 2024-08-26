@@ -4,7 +4,9 @@ import domain.Manager;
 import domain.Property;
 import domain.Request;
 import domain.Tenant;
+import org.jdbi.v3.core.Handle;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,19 +29,31 @@ public class RequestDAOTest {
     private Property property;
     private Manager manager;
 
+    @BeforeAll
+    public static void initialise() {
+        JdbiDAOFactory.setJdbcUri("jdbc:postgresql://localhost:1244/tests");
+
+        // Insert test data
+        try (Handle handle = JdbiDAOFactory.getJdbi().open()) {
+            handle.execute("DELETE FROM Tenant WHERE username = 'john'");
+            handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('John', 'Doe', '020321456', 'john', 'password')");
+        }
+    }
+
 
     @BeforeEach
     void setUp() {
-        requestDAO = new RequestCollectionsDAO();
+//        requestDAO = JdbiDAOFactory.getRequestDAO();
+      requestDAO = new RequestCollectionsDAO();
 
         manager = new Manager( "Steve", "Jobs", "020321456", "steve", "password");
         tenant = new Tenant("John", "Doe", "020321456", "john", "password");
-        property = new Property("0001", "The White House", "12 North Rd", tenant, manager);
+//      property = new Property("0001", "The White House", "12 North Rd", tenant, manager);
 
-        request1 = new Request("0001", "Broken Toilet", "The toilet is broken", true, property, tenant, false);
-        request2 = new Request("0002", "Broken Window", "The window is broken", false, property, tenant, false);
-        request3 = new Request("0003", "Broken Door", "The door is broken", true, property, tenant, false);
-        request4 = new Request("0004", "Broken Roof", "The roof is broken", false, property, tenant, false);
+        request1 = new Request("BToilet","Broken Toilet", "The toilet is broken", true, tenant, false);
+        request2 = new Request("BWindow","Broken Window", "The window is broken", false, tenant, false);
+        request3 = new Request("BDoor","Broken Door", "The door is broken", true, tenant, false);
+        request4 = new Request("BRoof","Broken Roof", "The roof is broken", false, tenant, false);
 
         //Add tests to the requestDAO
         requestDAO.createRequest(request1);
@@ -67,15 +81,15 @@ public class RequestDAOTest {
     }
 
     @Test
-    void getRequestById() {
+    void getRequestByTenant() {
 
         //Check that the following ids are included in the system
-        assertThat(requestDAO.getRequestById("0001"), is(request1));
-        assertThat(requestDAO.getRequestById("0002"), is(request2));
+        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), is(request1));
+        assertThat(requestDAO.getRequestByTenant(request2.getTenant().getUsername()), is(request2));
 
         //Check that no ids have been overwritten
-        assertThat(requestDAO.getRequestById("0001"), is(not(request2)));
-        assertThat(requestDAO.getRequestById("0002"), is(not(request1)));
+        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), is(not(request2)));
+        assertThat(requestDAO.getRequestByTenant(request2.getTenant().getUsername()), is(not(request1)));
 
     }
 
@@ -105,7 +119,7 @@ public class RequestDAOTest {
         //Update the request
         request4.setName("New Name");
         requestDAO.updateRequest(request4);
-        assertThat(requestDAO.getRequestById("0004").getName(), is("New Name"));
+        assertThat(requestDAO.getRequestByTenant(request4.getTenant().getUsername()).getName(), is("New Name"));
     }
 
     @Test

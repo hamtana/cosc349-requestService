@@ -35,7 +35,7 @@ public class JdbiDAOFactory {
         if (HIKARI_DATA_SOURCE == null) {
             initialisePool();
         }
-        return JDBI.onDemand(RequestDAO.class);
+        return JDBI.onDemand(RequestJdbiDAO.class);
     }
 
     public static TenantDAO getTenantDAO() {
@@ -43,6 +43,13 @@ public class JdbiDAOFactory {
             initialisePool();
         }
         return JDBI.onDemand(TenantJdbiDAO.class);
+    }
+
+    public static Jdbi getJdbi() {
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI;
     }
 
 

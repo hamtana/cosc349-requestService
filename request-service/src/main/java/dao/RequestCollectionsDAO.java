@@ -12,6 +12,7 @@ import domain.Request;
 import domain.Tenant;
 import org.checkerframework.checker.interning.qual.EqualsMethod;
 
+import javax.print.attribute.IntegerSyntax;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -62,31 +63,29 @@ public class RequestCollectionsDAO implements RequestDAO {
 //
 //    }
 
-    @Override
     public Collection<Request> getAllRequests(){
         return new ArrayList<Request>(requests.values());
     }
 
-    @Override
-    public Request getRequestById(String id){
-        return requests.get(id);
+    public Request getRequestByTenant(String username){
+        return requests.get(username);
     }
 
-    @Override
-    public void createRequest(Request request){
-        requests.put(request.getId(), request);
+
+    public Integer createRequest(Request request){
+        requests.put(request.getTenant().getUsername(), request);
         requestsByTenant.put(request.getTenant().getUsername(), request);
+        return 0;
     }
 
-   @Override
+
    public void updateRequest(Request request){
-        requests.put(request.getId(), request);
+        requests.put(request.getTenant().getUsername(), request);
         requestsByTenant.put(request.getTenant().getUsername(), request);
     }
 
-    @Override
     public void deleteRequest(Request request) {
-        requests.remove(request.getId());
+        requests.remove(request.getTenant().getUsername(), request);
         requestsByTenant.remove(request.getTenant().getUsername(), request);
     }
 
