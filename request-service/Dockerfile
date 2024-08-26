@@ -26,12 +26,6 @@ WORKDIR /app/request-service
 # add a volume for Gradle home
 VOLUME "/home/gradle/.gradle"
 
-## Ensure the gradlew script has correct permissions
-#RUN chmod +x gradlew
-#
-## Fix line endings in gradlew script
-#RUN dos2unix gradlew
-
 # Build the project using bash
 #RUN bash ./gradlew -Dorg.gradle.welcome=never --no-daemon build
 
@@ -47,12 +41,6 @@ COPY --from=build /app/request-service/build/install/request-service /home/deplo
 COPY --from=build /app/request-service/static /home/deployment/static
 
 RUN ls -l /home/deployment/static
-
-
-# Copy the built JAR from the build stage - cop
-#COPY --from=build /app/request-service /app
-#COPY --from=build /app/common /app
-#WORKDIR /app/request-service
 
 # switch into the stand-alone service folder
 WORKDIR /home/deployment
