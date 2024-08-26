@@ -4,26 +4,30 @@
  */
 package domain;
 
+import java.util.Objects;
+
 /**
  *
  * @author hamishp
  */
 public class Request {
     
-    private String id; 
+    private String id;
+
     private String name;
     private String description;
     private Boolean urgent;
-    private Property property; 
     private Tenant tenant; 
     private Boolean completed;
 
-    public Request(String id, String name, String description, boolean urgent, Property property, Tenant tenant, boolean completed) {
+    public Request() {
+    }
+
+    public Request(String id, String name, String description, boolean urgent, Tenant tenant, boolean completed) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.urgent = urgent;
-        this.property = property;
         this.tenant = tenant;
         this.completed = completed;
     }
@@ -60,14 +64,6 @@ public class Request {
         this.urgent = urgent;
     }
 
-    public Property getProperty() {
-        return property;
-    }
-
-    public void setProperty(Property property) {
-        this.property = property;
-    }
-
     public Tenant getTenant() {
         return tenant;
     }
@@ -83,6 +79,29 @@ public class Request {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Request other = (Request) obj;
+        return Objects.equals(this.id, other.id);
+    }
+    
     
     
 }

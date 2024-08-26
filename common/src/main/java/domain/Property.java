@@ -65,6 +65,8 @@ public class Property {
     public void setManager(Manager manager) {
         this.manager = manager;
     }
+    
+    
 
 
 }

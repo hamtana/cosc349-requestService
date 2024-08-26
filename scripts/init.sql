@@ -33,15 +33,14 @@ CREATE TABLE IF NOT EXISTS Property (
 
 -- Create Table for the Request Class
 CREATE TABLE IF NOT EXISTS Request (
-    id SERIAL PRIMARY KEY,
+    id VARCHAR(10) PRIMARY KEY,
     name VARCHAR(50),
     description VARCHAR(500),
     urgent BOOLEAN,
-    property_address VARCHAR(100) NOT NULL,
     tenant_username VARCHAR(50) NOT NULL,
+    completed BOOLEAN DEFAULT FALSE,
 
-    CONSTRAINT FK_PropertyAddress FOREIGN KEY (property_address) REFERENCES Property(address),
-    CONSTRAINT FK_TenantUsername FOREIGN KEY (tenant_username) REFERENCES Tenant(username)
+    CONSTRAINT FK_TenantUsername FOREIGN KEY (tenant_username) REFERENCES Tenant(username) ON DELETE CASCADE
 );
 
 
