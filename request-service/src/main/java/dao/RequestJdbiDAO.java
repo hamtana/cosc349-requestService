@@ -18,7 +18,11 @@ public interface RequestJdbiDAO extends RequestDAO{
 
     @SqlQuery("SELECT * FROM Request WHERE tenant_username = :tenant")
     @RegisterBeanMapper(Request.class)
-    public Request getRequestByTenant(@Bind("tenant") String username);
+    public Collection<Request> getRequestByTenant(@Bind("tenant") String username);
+
+    @SqlQuery("SELECT * FROM Request WHERE id = :id")
+    @RegisterBeanMapper(Request.class)
+    public Request getRequestById(@Bind("id") String id);
 
 
     @SqlUpdate("INSERT INTO Request (id, name, description, urgent, tenant_username, completed) " +
@@ -30,6 +34,7 @@ public interface RequestJdbiDAO extends RequestDAO{
             "tenant_username = :tenant.username, completed = :completed WHERE id = :id")
     public void updateRequest(@BindBean Request request);
 
-    public void deleteRequest(Request request);
+    @SqlUpdate("DELETE FROM Request WHERE id = :id")
+    public void deleteRequest(@BindBean Request request);
 }
 

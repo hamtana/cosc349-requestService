@@ -17,8 +17,10 @@ public interface RequestDAO {
 
     Collection<Request> getAllRequests();
 
-    Request getRequestByTenant(String username);
-//
+    Collection<Request> getRequestByTenant(String username);
+
+    Request getRequestById(String id);
+
     Integer createRequest(Request request);
 
     void updateRequest(Request request);

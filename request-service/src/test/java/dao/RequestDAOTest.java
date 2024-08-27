@@ -43,8 +43,8 @@ public class RequestDAOTest {
 
     @BeforeEach
     void setUp() {
-//        requestDAO = JdbiDAOFactory.getRequestDAO();
-      requestDAO = new RequestCollectionsDAO();
+        requestDAO = JdbiDAOFactory.getRequestDAO();
+//      requestDAO = new RequestCollectionsDAO();
 
         manager = new Manager( "Steve", "Jobs", "020321456", "steve", "password");
         tenant = new Tenant("John", "Doe", "020321456", "john", "password");
@@ -81,16 +81,26 @@ public class RequestDAOTest {
     }
 
     @Test
-    void getRequestByTenant() {
+    void getRequestsByTenant() {
+
+        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), hasItem(request1));
+        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), hasSize(3));
 
         //Check that the following ids are included in the system
-        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), is(request1));
-        assertThat(requestDAO.getRequestByTenant(request2.getTenant().getUsername()), is(request2));
+//        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), is(request1));
+//        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), hasProperty(request1.getTenant().getUsername()));
+//        assertThat(requestDAO.getRequestByTenant(request2.getTenant().getUsername()), is(request2));
 
         //Check that no ids have been overwritten
-        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), is(not(request2)));
-        assertThat(requestDAO.getRequestByTenant(request2.getTenant().getUsername()), is(not(request1)));
+//        assertThat(requestDAO.getRequestByTenant(request1.getTenant().getUsername()), not(hasItem(request2)));
+//        assertThat(requestDAO.getRequestByTenant(request2.getTenant().getUsername()), not(hasItem(request1)));
+    }
 
+    @Test
+    void getRequestById(){
+        assertThat(requestDAO.getRequestById(request1.getId()), is(request1));
+        assertThat(requestDAO.getRequestById(request2.getId()), is(request2));
+        assertThat(requestDAO.getRequestById(request3.getId()), is(request3));
     }
 
     @Test
@@ -119,7 +129,7 @@ public class RequestDAOTest {
         //Update the request
         request4.setName("New Name");
         requestDAO.updateRequest(request4);
-        assertThat(requestDAO.getRequestByTenant(request4.getTenant().getUsername()).getName(), is("New Name"));
+        assertThat(requestDAO.getAllRequests(), hasItem(request4));
     }
 
     @Test

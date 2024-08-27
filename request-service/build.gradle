@@ -56,7 +56,7 @@ test {
 	useJUnitPlatform();
 
 //	 only run tests if we explicitly run the "tests" task
-	onlyIf { project.gradle.startParameter.taskNames.contains("test") };
+//	onlyIf { project.gradle.startParameter.taskNames.contains("test") };
 }
 
 run {

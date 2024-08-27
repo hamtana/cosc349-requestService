@@ -67,8 +67,12 @@ public class RequestCollectionsDAO implements RequestDAO {
         return new ArrayList<Request>(requests.values());
     }
 
-    public Request getRequestByTenant(String username){
-        return requests.get(username);
+    public Collection<Request> getRequestByTenant(String username){
+        return requestsByTenant.get(username);
+    }
+
+    public Request getRequestById(String id){
+        return requests.get(id);
     }
 
 
