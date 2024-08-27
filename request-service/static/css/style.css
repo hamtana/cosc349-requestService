@@ -1,0 +1,107 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/*
+    Created on : 31/07/2023, 5:06:03 pm
+    Author     : hamishp
+*/
+
+/* centre the main content area */
+main {
+	max-width: 800px;
+	margin: auto;
+}
+
+/* page headings */
+h1 {
+	text-align: center;
+	padding: 10px;
+}
+
+/* nav links */
+nav a {
+	border:solid;
+	padding: 5px;
+	margin: 5px;
+	text-decoration: none;
+	border-radius: 10px;
+}
+
+nav {
+	text-align: center;
+}
+
+/* tables */
+table {
+	margin: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border-spacing: 0px 0px;
+}
+
+td, th {
+	border: thin;
+	border-width: 0px 0px 1px 0px;
+	border-style: solid;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* forms */
+form {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	grid-gap: 1em 0.5em;
+}
+
+label {
+	grid-column: 1 / 2;
+	text-align: right;
+}
+
+input, button, select, textarea {
+	grid-column: 2 / 3;
+}
+
+textarea {
+	height: 4em;
+	resize: vertical;
+}
+
+/* colours */
+th, a.nav, legend, label {
+	color: darkgreen;
+}
+
+h1, button {
+	background-color: darkgreen;
+	color: white;
+}
+
+td, th {
+	border-color: darkslategrey;
+}
+
+body {
+    background-color: beige;
+}
+
+/* centre the major buttons */
+#categories {
+	display: block;
+	text-align: center;
+}
+
+/* add some gaps between the major buttons */
+#categories button {
+	margin-left: 2pt;
+	margin-right: 2pt;
+}
+
+#welcome {
+    position: absolute;
+    margin-right: 30em;
+    text-align: center;
+}
