@@ -1,6 +1,7 @@
 package web;
 
 import dao.TenantDAO;
+import helpers.Argon2Helper;
 import helpers.ScryptHelper;
 import io.jooby.Jooby;
 import domain.Tenant;
@@ -16,7 +17,7 @@ public class TenantModule extends Jooby {
         post("api/tenants", ctx -> {
             Tenant tenant = ctx.body().to(Tenant.class);
             String password = tenant.getPassword();
-            CharBuffer hash = ScryptHelper.hash(password);
+            CharBuffer hash = Argon2Helper.hashPasswordChar(password);
             tenant.setPassword(hash.toString());
             dao.saveTenant(tenant);
             return ctx.send(StatusCode.CREATED);

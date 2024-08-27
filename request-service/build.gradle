@@ -28,7 +28,7 @@ dependencies {
 	
 	// Database 
 	def jdbiVer = "3.40.0"
-	implementation 'org.postgresql:postgresql:42.6.0';
+	implementation 'org.postgresql:postgresql:42.6.1';
 	implementation group: "org.jdbi", name: "jdbi3-core", version: jdbiVer;
 	implementation group: "org.jdbi", name: "jdbi3-sqlobject", version: jdbiVer;
 	implementation group: "com.zaxxer", name: "HikariCP", version: "5.0.1";
@@ -43,10 +43,6 @@ dependencies {
 	testImplementation group: "org.hamcrest", name: "hamcrest", version: "2.2";
 	testImplementation group: "org.mockito", name: "mockito-core", version: "4.6.1";
 	testImplementation group: "org.assertj", name: "assertj-swing", version: "3.17.1";
-	
-	def retrofitVer = "2.9.0"
-	testImplementation group: "com.squareup.retrofit2", name: "retrofit", version: retrofitVer;
-	testImplementation group: "com.squareup.retrofit2", name: "converter-gson", version: retrofitVer;
 
 
 
