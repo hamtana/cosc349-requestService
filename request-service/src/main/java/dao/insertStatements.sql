@@ -9,11 +9,11 @@ INSERT INTO Tenant (id, firstName, lastName, phoneNumber, username, password) VA
 ('T002', 'Daisy', 'Duke', '3456789012', 'daisyduke', 'password012');
 
 -- Insert data into Property table
-INSERT INTO Property (id, name, address, tenant_username, manager_username) VALUES
-('P001', 'Green Villa', '123 Elm St', 'charlieb', 'alicej'),
-('P002', 'Sunny Apartments', '456 Oak St', 'daisyduke', 'bobsmith');
+INSERT INTO Property (id, name, address, tenant_username) VALUES
+(1, 'Green Villa', '123 Elm St', 'bob'),
+(1, 'Sunny Apartments', '456 Oak St', 'bob');
 
 -- Insert data into Request table
-INSERT INTO Request (id, name, description, urgent, property_address, tenant_username) VALUES
-('R001', 'Leaky Faucet', 'The kitchen faucet is leaking and needs urgent repair.', TRUE, '123 Elm St', 'charlieb'),
-('R002', 'Broken Window', 'The living room window is broken and needs replacement.', FALSE, '456 Oak St', 'daisyduke');
+INSERT INTO Request (id, name, description, urgent, tenant_username) VALUES
+('R001', 'Leaky Faucet', 'The kitchen faucet is leaking and needs urgent repair.', TRUE, 'Bob'),
+('R002', 'Broken Window', 'The living room window is broken and needs replacement.', FALSE, 'Bob');

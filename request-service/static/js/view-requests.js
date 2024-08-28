@@ -1,6 +1,6 @@
 /* global Vue, axios */
 var requestsApi = '/api/requests';
-var requestApiTenant = ({username}) => `/api/requests/tenant/${username}`;
+var requestApiTenant = ({username}) => `/api/requests/${username}`;
 
 const app = Vue.createApp({
     data() {
@@ -48,7 +48,7 @@ const app = Vue.createApp({
     },
 
     // Other modules
-    mixins: [NumberFormatter]
+    mixins: []
 });
 
 // other component imports go here
@@ -62,8 +62,6 @@ app.component('navmenu', navigationMenu);
 // import data store
 import { dataStore } from './data-store.js';
 app.use(dataStore);
-
-import { NumberFormatter } from './number-formatter.js';
 
 // mount the page - this needs to be the last line in the file
 app.mount("main");

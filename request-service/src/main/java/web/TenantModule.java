@@ -16,6 +16,7 @@ public class TenantModule extends Jooby {
         get("/api/tenants/{username}", ctx -> {
             String username = ctx.path("username").value();
             Tenant tenant = dao.getTenantByUsername(username);
+
             if (tenant == null){
                 return ctx.send(StatusCode.NOT_FOUND);
             } else {
