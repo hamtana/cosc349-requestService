@@ -8,6 +8,17 @@ application {
 	mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : defaultMainClassName;
 }
 
+sourceSets {
+	"static" {
+		resources {
+			srcDirs = ["static"]
+		}
+		java{
+			srcDirs = []
+		}
+	}
+}
+
 dependencies {
 		
 	implementation project(":common");
@@ -59,13 +70,4 @@ run {
 	standardInput = System.in;
 }
 
-sourceSets {
-	"static" {
-		resources {
-			srcDirs = ["static"]
-		}
-		java{
-			srcDirs = []
-		}
-	}
-}
+

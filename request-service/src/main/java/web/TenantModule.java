@@ -14,7 +14,7 @@ public class TenantModule extends Jooby {
     public TenantModule(TenantDAO dao){
 
 
-        post("api/tenants", ctx -> {
+        post("/api/tenants", ctx -> {
             Tenant tenant = ctx.body().to(Tenant.class);
             String password = tenant.getPassword();
             CharBuffer hash = Argon2Helper.hashPasswordChar(password);
