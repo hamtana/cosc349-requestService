@@ -15,6 +15,10 @@ export const dataStore = Vuex.createStore({
         signIn(state, tenant){
             state.tenant = tenant;
         }
+
+        selectRequest(state, request){
+            state.request = request;
+        }
     },
 
         // add session storage persistence
