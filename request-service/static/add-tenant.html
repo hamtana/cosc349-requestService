@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/external/vue.global.js"></script>
+    <script src="js/external/vuex.global.js"></script>
+    <script src="js/external/vuex-persistedstate.js"></script>
+    <script src="js/external/axios.js"></script>
+    <title>Create Tenant Account</title>
+</head>
+<body>
+<main>
+    <navmenu></navmenu>
+    <h1>Add New Tenant</h1>
+
+    <fieldset>
+        <legend>Tenant Details</legend>
+
+
+        <form @submit.prevent="addTenant()">
+            <!--<label>ID:</label><input type="number" name="id" hidden/>-->
+            <label>Username:</label><input type="text" v-model="tenant.username" required/>
+            <label>First Name:</label><input type="text" v-model="tenant.firstName" required/>
+            <label>Last Name:</label><input type="text" v-model="tenant.lastName" required/>
+            <label>Phone Number:</label><input type="text" v-model="tenant.phoneNumber" required/>
+            <label>Password:</label><input type="password" v-model="tenant.password"/>
+            <button type="submit">Add Customer</button>
+
+
+        </form>
+    </fieldset>
+    <a class="nav" href="index.html">Back to Home</a>
+</main>
+<script type="module" src="js/add-tenant.js"></script>
+</body>
+</html>

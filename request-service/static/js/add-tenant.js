@@ -13,7 +13,8 @@ const app = Vue.createApp({
     },
 
     mounted(){
-        //semi colon seperated statements 
+        //for testing
+        alert('Mounted method called - testing');
     },
 
     methods: {
