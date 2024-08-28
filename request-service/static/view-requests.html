@@ -2,17 +2,18 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="css/style.css"/>
-    <script src="js/external/vue.global.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css@1.15.0/mvp.css">    <script src="js/external/vue.global.js"></script>
     <script src="js/external/vuex.global.js"></script>
     <script src="js/external/vuex-persistedstate.js"></script>
     <script src="js/external/axios.js"></script>
-    <title>View Products</title>
+    <title>View Requests</title>
 </head>
 <body>
 <main>
     <navmenu></navmenu>
     <h1>Requests</h1>
+
+    <a class="nav" href="add-request.html">Add Request</a>
 
     <table>
         <thead>
@@ -33,7 +34,7 @@
             <td>{{request.urgent}}</td>
             <td>{{request.tenant.getUsername()}}</td>
             <td>{{request.completed}}</td>
-            <td><button @click.prevent="editRequest(request)">Edit</button></td>
+            <td><button @click.prevent="updateRequest(request)">Update</button></td>
         </tr>
         </tbody>
     </table>

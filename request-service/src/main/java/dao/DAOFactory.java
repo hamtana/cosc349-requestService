@@ -3,8 +3,8 @@ package dao;
 public class DAOFactory {
 
         public static RequestDAO getRequestDAO() {
-            //return JdbiDAOFactory.getRequestDAO();
-            return new RequestCollectionsDAO();
+            return JdbiDAOFactory.getRequestDAO();
+//            return new RequestCollectionsDAO();
 
         }
 

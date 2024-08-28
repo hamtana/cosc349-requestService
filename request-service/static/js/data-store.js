@@ -11,6 +11,7 @@ export const dataStore = Vuex.createStore({
         };
     },
 
+
     mutations: {
         // tenant signs in
         signIn(state, tenant) {

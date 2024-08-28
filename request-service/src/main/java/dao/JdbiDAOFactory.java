@@ -8,8 +8,11 @@ public class JdbiDAOFactory {
 
     private static final String DB_USERNAME = "admin";
     private static final String DB_PASSWORD = "admin";
+    private static final String DB_Name = "cosc349_database";
 
-    private static String dockerUri = "jdbc:postgresql://localhost:5432/cosc349_database";
+    //For running with docker.
+    private static String dockerUri = "jdbc:postgresql://db:5432/cosc349_database";
+
     private static String jdbiUri = "jdbc:postgresql://localhost:1234/cosc349_database";
 
     private static HikariDataSource HIKARI_DATA_SOURCE;
@@ -24,7 +27,8 @@ public class JdbiDAOFactory {
 
     public static void initialisePool(){
         HIKARI_DATA_SOURCE = new HikariDataSource();
-        HIKARI_DATA_SOURCE.setJdbcUrl(jdbiUri);
+        HIKARI_DATA_SOURCE.setJdbcUrl(dockerUri);
+//        HIKARI_DATA_SOURCE.setJdbcUrl(jdbiUri);
         HIKARI_DATA_SOURCE.setUsername(DB_USERNAME);
         HIKARI_DATA_SOURCE.setPassword(DB_PASSWORD);
         JDBI = Jdbi.create(HIKARI_DATA_SOURCE);
