@@ -9,7 +9,7 @@ public class DAOFactory {
         }
 
         public static TenantDAO getTenantDAO() {
-            //return JdbiDAOFactory.getTenantDAO();
-            return new TenantCollectionsDAO();
+            return JdbiDAOFactory.getTenantDAO();
+//            return new TenantCollectionsDAO();
         }
 }
