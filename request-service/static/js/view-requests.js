@@ -18,6 +18,7 @@ const app = Vue.createApp({
 
     mounted() {
         // Call the method to get requests by tenant
+        alert('Mounted method called - testing');
         this.getRequestByTenant();
     },
 
