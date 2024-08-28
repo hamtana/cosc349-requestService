@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/external/vue.global.js"></script>
+    <script src="js/external/vuex.global.js"></script>
+    <script src="js/external/vuex-persistedstate.js"></script>
+    <script src="js/external/axios.js"></script>
+    <title>View Products</title>
 </head>
 <body>
+<main>
+    <navmenu></navmenu>
+    <h1>Requests</h1>
 
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Urgent </th>
+            <th>Tenant </th>
+            <th>Completed</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="request in requests">
+            <td>{{request.id}}</td>
+            <td>{{request.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{request.urgent}}</td>
+            <td>{{request.tenant.getUsername()}}</td>
+            <td>{{request.completed}}</td>
+            <td><button @click.prevent="editRequest(request)">Edit</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="nav" href="index.html">Back to Home</a>
+</main>
+<script type="module" src="js/view-requests.js"></script>
 </body>
 </html>
