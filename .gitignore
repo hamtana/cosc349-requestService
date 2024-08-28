@@ -16,3 +16,5 @@ tmp/
 *.jar
 .DS_Store
 !gradle-wrapper.jar
+*.lock
+
