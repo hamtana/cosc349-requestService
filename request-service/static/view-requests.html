@@ -22,7 +22,6 @@
             <th>Name</th>
             <th>Description</th>
             <th>Urgent </th>
-            <th>Tenant </th>
             <th>Completed</th>
         </tr>
         </thead>
@@ -30,9 +29,8 @@
         <tr v-for="request in requests">
             <td>{{request.id}}</td>
             <td>{{request.name}}</td>
-            <td>{{product.description}}</td>
+            <td>{{request.description}}</td>
             <td>{{request.urgent}}</td>
-            <td>{{request.tenant.getUsername()}}</td>
             <td>{{request.completed}}</td>
             <td><button @click.prevent="updateRequest(request)">Update</button></td>
         </tr>

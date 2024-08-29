@@ -25,6 +25,7 @@ const app = Vue.createApp({
     methods: {
         // Function to get requests by tenant username
         getRequestByTenant() {
+             console.log(this.tenant); // Check the tenant object
             if (this.tenant && this.tenant.username) {
                 // Send GET request
                 axios.get(requestApiTenant({ 'username': this.tenant.username }))
