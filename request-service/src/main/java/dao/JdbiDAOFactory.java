@@ -27,8 +27,8 @@ public class JdbiDAOFactory {
 
     public static void initialisePool(){
         HIKARI_DATA_SOURCE = new HikariDataSource();
-        HIKARI_DATA_SOURCE.setJdbcUrl(dockerUri);
-//        HIKARI_DATA_SOURCE.setJdbcUrl(jdbiUri);
+//        HIKARI_DATA_SOURCE.setJdbcUrl(dockerUri);
+        HIKARI_DATA_SOURCE.setJdbcUrl(jdbiUri);
         HIKARI_DATA_SOURCE.setUsername(DB_USERNAME);
         HIKARI_DATA_SOURCE.setPassword(DB_PASSWORD);
         JDBI = Jdbi.create(HIKARI_DATA_SOURCE);

@@ -10,8 +10,18 @@ const app = Vue.createApp({
         };
     },
 
+        computed: {
+            // Map Vuex state to get the tenant from the data store
+            ...Vuex.mapState({
+                tenant: state => state.tenant
+            })
+        },
+
     mounted() {
         // semicolon separated statements
+        if (this.tenant) {
+            this.request.tenant = this.tenant;
+        }
 
 
     },
@@ -19,7 +29,11 @@ const app = Vue.createApp({
     methods: {
         // comma separated function declarations
         addRequest() {
-            axios.post(customersApi, this.request)
+        // Ensure that urgent and completed are always boolean values
+            this.request.urgent = !!this.request.urgent;
+            this.request.completed = !!this.request.completed;
+
+            axios.post(requestApi, this.request, this.tenant)
                     .then(() => {
                         window.location = 'view-requests.html';
                     })

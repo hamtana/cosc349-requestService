@@ -19,11 +19,10 @@
 
 
         <form @submit.prevent="addRequest()">
-            <label>ID:</label><input type="text" name="id" required/>
+            <label>ID:</label><input type="text" v-model="request.id" required/>
             <label>Name:</label><input type="text" v-model="request.name" required/>
-            <label>Description:</label><input type="text" v-model="request.firstName" required/>
+            <label>Description:</label><input type="text" v-model="request.description" required/>
             <label>Urgent:</label><input type="checkbox" v-model="request.urgent" required/>
-            <label>Tenant Username:</label><input type="text" v-model="request.tenant.username" required/>
             <label>Completed:</label><input type="checkbox" v-model="request.completed"/>
             <button type="submit">Add Request</button>
 
