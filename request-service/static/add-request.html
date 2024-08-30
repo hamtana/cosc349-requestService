@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/external/vue.global.js"></script>
+    <script src="js/external/vuex.global.js"></script>
+    <script src="js/external/vuex-persistedstate.js"></script>
+    <script src="js/external/axios.js"></script>
+    <title>Create Customer Account</title>
+</head>
+<body>
+<main>
+    <navmenu></navmenu>
+    <h1>Add New Request</h1>
+
+    <fieldset>
+        <legend>Request Details</legend>
+
+
+        <form @submit.prevent="addRequest()">
+            <label>ID:</label><input type="text" name="id" required/>
+            <label>Name:</label><input type="text" v-model="request.name" required/>
+            <label>Description:</label><input type="text" v-model="request.firstName" required/>
+            <label>Urgent:</label><input type="checkbox" v-model="request.urgent" required/>
+            <label>Tenant Username:</label><input type="text" v-model="request.tenant.username" required/>
+            <label>Completed:</label><input type="checkbox" v-model="request.completed"/>
+            <button type="submit">Add Request</button>
+
+
+        </form>
+    </fieldset>
+    <a class="nav" href="index.html">Back to Home</a>
+</main>
+<script type="module" src="js/add-request.js"></script>
+</body>
+</html>
