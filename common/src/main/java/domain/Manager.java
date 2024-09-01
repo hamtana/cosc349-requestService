@@ -12,6 +12,9 @@ import java.util.Objects;
  * @author hamishp
  */
 public class Manager {
+
+    private Integer id;
+
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -24,6 +27,14 @@ public class Manager {
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {

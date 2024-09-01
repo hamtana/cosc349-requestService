@@ -14,4 +14,6 @@ public interface PropertyDAO {
 
     Collection<Property> getAllProperties();
 
+    Collection<Property> getPropertiesByManagerId(Integer managerId);
+
 }
