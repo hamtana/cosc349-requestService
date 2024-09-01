@@ -12,13 +12,13 @@ import java.util.Collection;
  */
 public class Property {
     
-    private String id;
+    private Integer id;
     private String name;
     private String address;
     private Tenant tenant;
     private Manager manager;
 
-    public Property(String id, String name, String address, Tenant tenant, Manager manager) {
+    public Property(Integer id, String name, String address, Tenant tenant, Manager manager) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -26,11 +26,11 @@ public class Property {
         this.manager = manager;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
