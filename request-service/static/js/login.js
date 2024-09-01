@@ -15,7 +15,6 @@ const app = Vue.createApp({
     },
 
     mounted() {
-        alert('Mounted method called - testing');
     },
 
     methods: {
