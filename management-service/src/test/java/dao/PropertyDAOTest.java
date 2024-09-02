@@ -4,6 +4,7 @@ import domain.Manager;
 import domain.Property;
 import domain.Tenant;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +18,22 @@ class PropertyDAOTest {
     private Property property2;
     private Property property3;
 
+    @BeforeAll
+    public static void initialise() {
+        JdbiDAOFactory.setJdbcUri("jdbc:postgresql://localhost:1244/tests");
+
+//        // Insert test data
+//        try (Handle handle = JdbiDAOFactory.getJdbi().open()) {
+//            handle.execute("DELETE FROM Tenant WHERE username = 'john'");
+//            handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('John', 'Doe', '020321456', 'john', 'password')");
+//        }
+    }
+
+
     @BeforeEach
     void setUp() {
-        propertyDAO = new PropertyCollectionsDAO();
+//        propertyDAO = new PropertyCollectionsDAO();
+        propertyDAO = JdbiDAOFactory.getPropertyDAO();
 
         Tenant tenant1 = new Tenant("John", "Doe", "123456789", "johndoe", "password");
         Tenant tenant2 = new Tenant("Jane", "Doe", "987654321", "janedoe", "password");
@@ -61,14 +75,14 @@ class PropertyDAOTest {
     @Test
     void updateProperty() {
         //check that property1 has the correct name
-        assertThat(propertyDAO.getPropertyById(1).getName(), is("Property 1"));
+        assertThat(propertyDAO.getPropertyByName("Property 1").getName(), is("Property 1"));
 
         //change the name of property1
         property1.setName("New Property 1");
         propertyDAO.updateProperty(property1);
 
         //check that property1 has the new name
-        assertThat(propertyDAO.getPropertyById(1).getName(), is("New Property 1"));
+        assertThat(propertyDAO.getPropertyByName("New Property 1").getName(), is("New Property 1"));
     }
 
     @Test
@@ -87,9 +101,9 @@ class PropertyDAOTest {
     }
 
     @Test
-    void getPropertyById() {
+    void getPropertyByName() {
         //check that property1 is in the DAO
-        assertThat(propertyDAO.getPropertyById(1), is(property1));
+        assertThat(propertyDAO.getPropertyByName("Property 1"), is(property1));
     }
 
     @Test

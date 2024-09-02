@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Tenant (
 -- Create Table for the Property Class
 CREATE TABLE IF NOT EXISTS Property (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(50),
+    name VARCHAR(50) UNIQUE NOT NULL,
     address VARCHAR(100) UNIQUE NOT NULL,
     tenant_username VARCHAR(50) NOT NULL,
     manager_username VARCHAR(50) NOT NULL,

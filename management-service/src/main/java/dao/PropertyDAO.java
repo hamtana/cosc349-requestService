@@ -12,7 +12,7 @@ public interface PropertyDAO {
 
     void deleteProperty(Property property);
 
-    Property getPropertyById(Integer id);
+    Property getPropertyByName(String name);
 
     Collection<Property> getAllProperties();
 

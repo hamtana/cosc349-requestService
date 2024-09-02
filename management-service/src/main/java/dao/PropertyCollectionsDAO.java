@@ -10,30 +10,30 @@ import java.util.Map;
 
 public class PropertyCollectionsDAO implements PropertyDAO {
 
-    private static final Map<Integer, Property> properties = new HashMap<>();
+    private static final Map<String, Property> properties = new HashMap<>();
     private static final Multimap<String, Property> propertiesByManagerUsername = HashMultimap.create();
 
     @Override
     public void createProperty(Property property) {
-        properties.put(property.getId(), property);
+        properties.put(property.getName(), property);
         propertiesByManagerUsername.put(property.getManager().getUsername(), property);
     }
 
     @Override
     public void updateProperty(Property property) {
-        properties.put(property.getId(), property);
+        properties.put(property.getName(), property);
         propertiesByManagerUsername.put(property.getManager().getUsername(), property);
     }
 
     @Override
     public void deleteProperty(Property property) {
-        properties.remove(property.getId());
+        properties.remove(property.getName());
         propertiesByManagerUsername.remove(property.getManager().getUsername(), property);
     }
 
     @Override
-    public Property getPropertyById(Integer id) {
-        return properties.get(id);
+    public Property getPropertyByName(String name) {
+        return properties.get(name);
     }
 
     @Override
