@@ -1,3 +1,5 @@
+package dao;
+
 import domain.Manager;
 
 import java.util.Collection;

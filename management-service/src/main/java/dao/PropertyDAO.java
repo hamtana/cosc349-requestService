@@ -1,3 +1,5 @@
+package dao;
+
 import domain.Property;
 
 import java.util.Collection;
@@ -14,6 +16,6 @@ public interface PropertyDAO {
 
     Collection<Property> getAllProperties();
 
-    Collection<Property> getPropertiesByManagerId(Integer managerId);
+    Collection<Property> getPropertiesByManagerUsername(String username);
 
 }
