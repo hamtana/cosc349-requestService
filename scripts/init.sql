@@ -53,10 +53,11 @@ CREATE TABLE IF NOT EXISTS Management (
     description VARCHAR(500),
     property_address VARCHAR(100) NOT NULL,
     request_id VARCHAR(10) NOT NULL,
+    status VARCHAR(100) NOT NULL,
+    LOCAL_DATE_TIME TIMESTAMP,
 
     CONSTRAINT FK_Property FOREIGN KEY (property_address) REFERENCES Property(address) ON DELETE CASCADE,
-    CONSTRAINT FK_Request FOREIGN KEY (request_id) REFERENCES Request(id) ON DELETE CASCADE
-
+    CONSTRAINT FK_RequestId FOREIGN KEY (request_id) REFERENCES Request(id) ON DELETE CASCADE
 );
 
 

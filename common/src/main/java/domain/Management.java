@@ -1,5 +1,8 @@
 package domain;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
+
 public class Management {
 
     private Integer workNumber;
@@ -7,15 +10,19 @@ public class Management {
     private String description;
     private Property property;
     private Request request;
+    private String status;
+    private transient LocalDateTime date;
 
     public Management() {
     }
 
-    public Management(String name, String description, Property property, Request request) {
+    public Management(String name, String description, Property property, Request request, String status, LocalDateTime date) {
         this.name = name;
         this.description = description;
         this.property = property;
         this.request = request;
+        this.status = status;
+        this.date = date;
     }
 
     public Integer getWorkNumber() {
@@ -48,6 +55,22 @@ public class Management {
 
     public void setProperty(Property property) {
         this.property = property;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Request getRequest() {
