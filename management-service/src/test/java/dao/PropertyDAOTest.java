@@ -1,5 +1,5 @@
-import dao.PropertyCollectionsDAO;
-import dao.PropertyDAO;
+package dao;
+
 import domain.Manager;
 import domain.Property;
 import domain.Tenant;

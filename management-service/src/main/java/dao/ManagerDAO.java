@@ -1,6 +1,7 @@
 package dao;
 
 import domain.Manager;
+import domain.Tenant;
 
 import java.util.Collection;
 

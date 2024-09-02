@@ -21,6 +21,9 @@ public class Manager {
     private String username;
     private String password;
 
+    public Manager() {
+    }
+
     public Manager(String firstName, String lastName, String phoneNumber, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

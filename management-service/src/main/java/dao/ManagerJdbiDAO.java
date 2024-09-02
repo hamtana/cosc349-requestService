@@ -13,7 +13,8 @@ import java.util.Collection;
 
 public interface ManagerJdbiDAO extends ManagerDAO {
 
-    default boolean checkUsernamePassword(String username, String password, Tenant tenant) {
+    @Override
+    default boolean checkManagerUsernamePassword(String username, String password, Manager manager) {
         // Fetch tenant by username
         Manager storedManager= getManagerByUsername(username);
         if (storedManager == null) {
