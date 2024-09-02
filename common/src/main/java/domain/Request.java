@@ -19,17 +19,19 @@ public class Request {
     private Boolean urgent;
     private Tenant tenant; 
     private Boolean completed;
+    private Property property;
 
     public Request() {
     }
 
-    public Request(String id, String name, String description, boolean urgent, Tenant tenant, boolean completed) {
+    public Request(String id, String name, String description, boolean urgent, Tenant tenant, boolean completed, Property property) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.urgent = urgent;
         this.tenant = tenant;
         this.completed = completed;
+        this.property = property;
     }
 
     public String getId() {
@@ -78,6 +80,14 @@ public class Request {
 
     public void setCompleted(Boolean completed) {
         this.completed = completed;
+    }
+
+    public Property getProperty() {
+        return property;
+    }
+
+    public void setProperty(Property property) {
+        this.property = property;
     }
 
     @Override

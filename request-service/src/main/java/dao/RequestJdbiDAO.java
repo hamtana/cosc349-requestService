@@ -25,13 +25,13 @@ public interface RequestJdbiDAO extends RequestDAO{
     public Request getRequestById(@Bind("id") String id);
 
 
-    @SqlUpdate("INSERT INTO Request (id, name, description, urgent, tenant_username, completed) " +
-            "VALUES(:id, :name, :description, :urgent, :tenant.username, :completed)")
+    @SqlUpdate("INSERT INTO Request (id, name, description, urgent, tenant_username, completed, property_address) " +
+            "VALUES(:id, :name, :description, :urgent, :tenant.username, :completed, :property.address)")
     Integer createRequest(@BindBean Request request);
 
 
     @SqlUpdate("UPDATE Request SET name = :name, description = :description, urgent = :urgent, " +
-            "tenant_username = :tenant.username, completed = :completed WHERE id = :id")
+            "tenant_username = :tenant.username, property_address = :property.address, completed = :completed WHERE id = :id")
     public void updateRequest(@BindBean Request request);
 
     @SqlUpdate("DELETE FROM Request WHERE id = :id")
