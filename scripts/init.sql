@@ -39,8 +39,24 @@ CREATE TABLE IF NOT EXISTS Request (
     urgent BOOLEAN,
     tenant_username VARCHAR(50) NOT NULL,
     completed BOOLEAN DEFAULT FALSE,
+    property_address VARCHAR(100) NOT NULL,
 
+    CONSTRAINT FK_Property FOREIGN KEY (property_address) REFERENCES Property(address) ON DELETE CASCADE,
     CONSTRAINT FK_TenantUsername FOREIGN KEY (tenant_username) REFERENCES Tenant(username) ON DELETE CASCADE
+);
+
+
+-- Create Table for Management
+CREATE TABLE IF NOT EXISTS Management (
+    workNumber SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    description VARCHAR(500),
+    property_address VARCHAR(100) NOT NULL,
+    request_id VARCHAR(10) NOT NULL,
+
+    CONSTRAINT FK_Property FOREIGN KEY (property_address) REFERENCES Property(address) ON DELETE CASCADE,
+    CONSTRAINT FK_Request FOREIGN KEY (request_id) REFERENCES Request(id) ON DELETE CASCADE
+
 );
 
 
