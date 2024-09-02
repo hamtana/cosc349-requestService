@@ -20,17 +20,17 @@ public interface PropertyJdbiDAO extends PropertyDAO {
     @Override
     @SqlUpdate("UPDATE Property SET name = :name, address = :address," +
             " tenant_username = :tenant.username, " +
-            "manager_username = :manager.username WHERE id = :id")
+            "manager_username = :manager.username WHERE address = :address")
     void updateProperty(@BindBean Property property);
 
     @Override
-    @SqlUpdate("DELETE FROM Property WHERE name = :name")
+    @SqlUpdate("DELETE FROM Property WHERE address = :address")
     void deleteProperty(@BindBean Property property);
 
     @Override
-    @SqlQuery("SELECT * FROM Property WHERE name = :name")
+    @SqlQuery("SELECT * FROM Property WHERE address = :address")
     @RegisterBeanMapper(Property.class)
-    Property getPropertyByName(@Bind("name") String name);
+    Property getPropertyByAddress(@Bind("address") String address);
 
     @Override
     @SqlQuery("SELECT * FROM Property ORDER BY id")

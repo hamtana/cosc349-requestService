@@ -56,5 +56,11 @@ public class JdbiDAOFactory {
         return JDBI;
     }
 
+    public static void closePool(){
+        if(HIKARI_DATA_SOURCE != null){
+            HIKARI_DATA_SOURCE.close();
+        }
+    }
+
 
 }

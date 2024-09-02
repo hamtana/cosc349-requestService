@@ -3,6 +3,7 @@ package dao;
 import domain.Manager;
 import domain.Property;
 import domain.Tenant;
+import org.jdbi.v3.core.Handle;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,11 +23,19 @@ class PropertyDAOTest {
     public static void initialise() {
         JdbiDAOFactory.setJdbcUri("jdbc:postgresql://localhost:1244/tests");
 
-//        // Insert test data
-//        try (Handle handle = JdbiDAOFactory.getJdbi().open()) {
-//            handle.execute("DELETE FROM Tenant WHERE username = 'john'");
-//            handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('John', 'Doe', '020321456', 'john', 'password')");
-//        }
+        // Insert test data
+        try (Handle handle = JdbiDAOFactory.getJdbi().open()) {
+            handle.execute("DELETE FROM Tenant WHERE username = 'johndoe'");
+            handle.execute("DELETE FROM Tenant WHERE username = 'janedoe'");
+            handle.execute("DELETE FROM Tenant WHERE username = 'johnsmith'");
+            handle.execute("DELETE FROM Manager WHERE username = 'janesmith'");
+
+            handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('John', 'Doe', '123456789', 'johndoe', 'password')");
+            handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('Jane', 'Doe', '987654321', 'janedoe', 'password')");
+            handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('Bob', 'Smith', '123456789', 'johnsmith', 'password')");
+
+            handle.execute("INSERT INTO Manager (firstName, lastName, phoneNumber, username, password) VALUES ('Jane', 'Smith', '987654321', 'janesmith', 'password')");
+        }
     }
 
 
@@ -37,13 +46,13 @@ class PropertyDAOTest {
 
         Tenant tenant1 = new Tenant("John", "Doe", "123456789", "johndoe", "password");
         Tenant tenant2 = new Tenant("Jane", "Doe", "987654321", "janedoe", "password");
-        Tenant tenant3 = new Tenant("John", "Smith", "123456789", "johnsmith", "password");
+        Tenant tenant3 = new Tenant("Bob", "Smith", "123456789", "johnsmith", "password");
 
         Manager manager1 = new Manager("Jane", "Smith", "987654321", "janesmith", "password");
 
-        property1 = new Property(1, "Property 1", "Address 1", tenant1, manager1);
-        property2 = new Property(2, "Property 2", "Address 2", tenant2, manager1);
-        property3 = new Property(3, "Property 3", "Address 3", tenant3, manager1);
+        property1 = new Property("Property 1", "Address 1", tenant1, manager1);
+        property2 = new Property("Property 2", "Address 2", tenant2, manager1);
+        property3 = new Property("Property 3", "Address 3", tenant3, manager1);
 
         propertyDAO.createProperty(property1);
         propertyDAO.createProperty(property2);
@@ -75,14 +84,14 @@ class PropertyDAOTest {
     @Test
     void updateProperty() {
         //check that property1 has the correct name
-        assertThat(propertyDAO.getPropertyByName("Property 1").getName(), is("Property 1"));
+        assertThat(propertyDAO.getAllProperties(), hasItem(property1));
 
         //change the name of property1
         property1.setName("New Property 1");
         propertyDAO.updateProperty(property1);
 
         //check that property1 has the new name
-        assertThat(propertyDAO.getPropertyByName("New Property 1").getName(), is("New Property 1"));
+        assertThat(propertyDAO.getAllProperties(), hasItem(property1));
     }
 
     @Test
@@ -101,9 +110,9 @@ class PropertyDAOTest {
     }
 
     @Test
-    void getPropertyByName() {
+    void getPropertyByAddress() {
         //check that property1 is in the DAO
-        assertThat(propertyDAO.getPropertyByName("Property 1"), is(property1));
+        assertThat(propertyDAO.getPropertyByAddress("Address 1"), is(property1));
     }
 
     @Test

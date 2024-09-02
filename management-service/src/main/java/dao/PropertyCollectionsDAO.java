@@ -15,25 +15,25 @@ public class PropertyCollectionsDAO implements PropertyDAO {
 
     @Override
     public void createProperty(Property property) {
-        properties.put(property.getName(), property);
+        properties.put(property.getAddress(), property);
         propertiesByManagerUsername.put(property.getManager().getUsername(), property);
     }
 
     @Override
     public void updateProperty(Property property) {
-        properties.put(property.getName(), property);
+        properties.put(property.getAddress(), property);
         propertiesByManagerUsername.put(property.getManager().getUsername(), property);
     }
 
     @Override
     public void deleteProperty(Property property) {
-        properties.remove(property.getName());
+        properties.remove(property.getAddress());
         propertiesByManagerUsername.remove(property.getManager().getUsername(), property);
     }
 
     @Override
-    public Property getPropertyByName(String name) {
-        return properties.get(name);
+    public Property getPropertyByAddress(String address) {
+        return properties.get(address);
     }
 
     @Override

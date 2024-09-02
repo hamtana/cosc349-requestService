@@ -5,6 +5,7 @@
 package domain;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.util.Collection;
 public class Property {
     
     private Integer id;
+
     private String name;
     private String address;
     private Tenant tenant;
@@ -21,8 +23,7 @@ public class Property {
     public Property() {
     }
 
-    public Property(Integer id, String name, String address, Tenant tenant, Manager manager) {
-        this.id = id;
+    public Property(String name, String address, Tenant tenant, Manager manager) {
         this.name = name;
         this.address = address;
         this.tenant = tenant;
@@ -68,6 +69,30 @@ public class Property {
     public void setManager(Manager manager) {
         this.manager = manager;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.address);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Property other = (Property) obj;
+        return Objects.equals(this.address, other.address);
+    }
+
+
     
     
 
