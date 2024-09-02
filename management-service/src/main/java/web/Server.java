@@ -3,8 +3,6 @@ package web;
 import dao.DAOFactory;
 import dao.ManagerDAO;
 import dao.PropertyDAO;
-import dao.RequestDAO;
-import dao.TenantDAO;
 import io.jooby.Jooby;
 import io.jooby.ServerOptions;
 import io.jooby.StatusCode;

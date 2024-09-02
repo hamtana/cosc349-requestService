@@ -18,6 +18,9 @@ public class Property {
     private Tenant tenant;
     private Manager manager;
 
+    public Property() {
+    }
+
     public Property(Integer id, String name, String address, Tenant tenant, Manager manager) {
         this.id = id;
         this.name = name;

@@ -18,7 +18,7 @@ RUN \
 COPY ../common /app/common
 COPY ../build.gradle ./
 COPY  ../settings.gradle ./
-COPY ../management-service-service /app/management-service
+COPY ../management-service /app/management-service
 
 # Shift to the Request Service Directory
 WORKDIR /app/management-service

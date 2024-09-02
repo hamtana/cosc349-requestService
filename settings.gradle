@@ -2,3 +2,6 @@ rootProject.name = "assignment1";
 include "management-service";
 include "request-service";
 include "common";
+include 'management-service:static'
+findProject(':management-service:static')?.name = 'static'
+
