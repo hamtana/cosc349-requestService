@@ -12,4 +12,8 @@ public class DAOFactory {
             return JdbiDAOFactory.getTenantDAO();
 //            return new TenantCollectionsDAO();
         }
+
+        public static PropertyDAO getPropertyDAO() {
+            return JdbiDAOFactory.getPropertyDAO();
+        }
 }

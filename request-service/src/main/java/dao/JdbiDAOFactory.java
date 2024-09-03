@@ -49,6 +49,13 @@ public class JdbiDAOFactory {
         return JDBI.onDemand(TenantJdbiDAO.class);
     }
 
+    public static PropertyDAO getPropertyDAO() {
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(PropertyJdbiDAO.class);
+    }
+
     public static Jdbi getJdbi() {
         if (HIKARI_DATA_SOURCE == null) {
             initialisePool();

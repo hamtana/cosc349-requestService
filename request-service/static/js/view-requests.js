@@ -1,6 +1,7 @@
 /* global Vue, axios */
 var requestsApi = '/api/requests';
-var requestApiTenant = ({username}) => `/api/requests/${username}`;
+var requestApiTenant = (username) => `/api/requests/${username}`;
+var propertiesApi = (username) => `/api/properties/tenant/${username}`;
 
 const app = Vue.createApp({
     data() {
@@ -18,20 +19,22 @@ const app = Vue.createApp({
 
     mounted() {
         // Call the method to get requests by tenant
-        alert('Mounted method called - testing');
         this.getRequestByTenant();
     },
 
     methods: {
         // Function to get requests by tenant username
         getRequestByTenant() {
-             console.log(this.tenant); // Check the tenant object
+            console.log(this.tenant); // Check the tenant object
             if (this.tenant && this.tenant.username) {
                 // Send GET request
-                axios.get(requestApiTenant({ 'username': this.tenant.username }))
+                axios.get(requestApiTenant(this.tenant.username))
                     .then(response => {
                         // Store response in requests model
                         this.requests = response.data;
+
+                        // Fetch property details using tenant username
+                        this.fetchPropertyDetails();
                     })
                     .catch(error => {
                         console.error(error);
@@ -39,6 +42,26 @@ const app = Vue.createApp({
                     });
             } else {
                 console.error("No tenant is signed in.");
+            }
+        },
+
+        // Function to fetch property details using tenant username
+        fetchPropertyDetails() {
+            if (this.tenant && this.tenant.username) {
+                axios.get(propertiesApi(this.tenant.username))
+                    .then(response => {
+                        // Assuming the property details are the same for all requests
+                        const propertyDetails = response.data;
+                        console.log('Fetched property details:', propertyDetails);
+
+                        // Update each request with the fetched property details
+                        this.requests.forEach(request => {
+                            request.property = propertyDetails;
+                        });
+                    })
+                    .catch(error => {
+                        console.error("Error fetching property details:", error);
+                    });
             }
         },
 
