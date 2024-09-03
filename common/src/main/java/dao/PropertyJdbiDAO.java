@@ -41,4 +41,9 @@ public interface PropertyJdbiDAO extends PropertyDAO {
     @SqlQuery("SELECT * FROM Property WHERE manager_username = :username")
     @RegisterBeanMapper(Property.class)
     Collection<Property> getPropertiesByManagerUsername(@Bind("username") String username);
+
+    @Override
+    @SqlQuery("SELECT * FROM Property WHERE tenant_username = :username")
+    @RegisterBeanMapper(Property.class)
+    Property getPropertyByTenantUsername(@Bind("username") String username);
 }

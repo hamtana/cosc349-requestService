@@ -12,23 +12,27 @@ public class PropertyCollectionsDAO implements PropertyDAO {
 
     private static final Map<String, Property> properties = new HashMap<>();
     private static final Multimap<String, Property> propertiesByManagerUsername = HashMultimap.create();
+    private static final Map<String, Property> propertiesByTenant = new HashMap<>();
 
     @Override
     public void createProperty(Property property) {
         properties.put(property.getAddress(), property);
         propertiesByManagerUsername.put(property.getManager().getUsername(), property);
+        propertiesByTenant.put(property.getTenant().getUsername(), property);
     }
 
     @Override
     public void updateProperty(Property property) {
         properties.put(property.getAddress(), property);
         propertiesByManagerUsername.put(property.getManager().getUsername(), property);
+        propertiesByTenant.put(property.getTenant().getUsername(), property);
     }
 
     @Override
     public void deleteProperty(Property property) {
         properties.remove(property.getAddress());
         propertiesByManagerUsername.remove(property.getManager().getUsername(), property);
+        propertiesByTenant.remove(property.getTenant().getUsername());
     }
 
     @Override
@@ -44,5 +48,10 @@ public class PropertyCollectionsDAO implements PropertyDAO {
     @Override
     public Collection<Property> getPropertiesByManagerUsername(String username) {
         return propertiesByManagerUsername.get(username);
+    }
+
+    @Override
+    public Property getPropertyByTenantUsername(String username) {
+        return propertiesByTenant.get(username);
     }
 }

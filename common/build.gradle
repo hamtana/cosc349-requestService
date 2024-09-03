@@ -4,6 +4,37 @@ plugins {
 
 dependencies {
 	implementation group: "com.google.code.gson", name: "gson", version: "2.10.1";
+
+	// jooby
+	implementation group: "io.jooby", name: "jooby-netty", version: joobyVer;
+	implementation group: "io.jooby", name: "jooby-gson", version: joobyVer;
+	implementation group: "io.jooby", name: "jooby-swagger-ui", version: joobyVer;
+	
+	// logging
+	implementation group: "org.slf4j", name: "slf4j-api", version: slf4jVer;
+	implementation group: "ch.qos.logback", name: "logback-classic", version: logbackVer;
+
+	// guava
+	implementation group: "com.google.guava", name: "guava", version: guavaVer;
+	
+	// Database 
+	def jdbiVer = "3.40.0"
+	implementation 'org.postgresql:postgresql:42.6.1';
+	implementation group: "org.jdbi", name: "jdbi3-core", version: jdbiVer;
+	implementation group: "org.jdbi", name: "jdbi3-sqlobject", version: jdbiVer;
+	implementation group: "com.zaxxer", name: "HikariCP", version: "5.0.1";
+		implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
+	implementation group: 'de.mkammerer', name: 'argon2-jvm', version: '2.1';
+	
+	//** testing ** //
+	def junitVer = "5.9.3"
+	testImplementation group: "org.junit.jupiter", name: "junit-jupiter-api", version: junitVer;
+	testRuntimeOnly group: "org.junit.jupiter", name: "junit-jupiter-engine", version: junitVer;
+	testImplementation group: "org.hamcrest", name: "hamcrest", version: "2.2";
+	testImplementation group: "org.mockito", name: "mockito-core", version: "4.6.1";
+	testImplementation group: "org.assertj", name: "assertj-swing", version: "3.17.1";
+	
+	
 }
 
 
