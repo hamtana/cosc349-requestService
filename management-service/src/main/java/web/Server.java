@@ -11,10 +11,11 @@ import io.jooby.gson.GsonModule;
 public class Server extends Jooby {
 
     private static final ManagerDAO managerDAO = DAOFactory.getManagerDAO();
-    private static final PropertyDAO propertyDAODAO = DAOFactory.getPropertyDAO();
+    private static final PropertyDAO propertyDAO = DAOFactory.getPropertyDAO();
 
     public Server(){
         install(new GsonModule());
+        mount(new ManagerModule(managerDAO));
 
         error(StatusCode.SERVER_ERROR, (ctx, cause, code) -> {
             ctx.getRouter().getLog().error(cause.getMessage(), cause);

@@ -1,0 +1,126 @@
+/* centre the main content area */
+main {
+	max-width: 800px;
+	margin: 40px auto;
+	padding: 20px;
+	background-color: #f5f7fa;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* page headings */
+h1 {
+	text-align: center;
+	padding: 20px;
+	color: #ffffff;
+	background-color: #2e8b57; /* Dark green */
+	border-radius: 8px;
+	margin-bottom: 20px;
+}
+
+/* nav links */
+nav a {
+	border: 2px solid #2e8b57; /* Match the header color */
+	padding: 10px 20px;
+	margin: 5px;
+	text-decoration: none;
+	border-radius: 10px;
+	color: #2e8b57;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.welcome {
+	text-align: left;
+}
+
+nav a:hover {
+	background-color: #2e8b57;
+	color: #ffffff;
+}
+
+nav {
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+/* tables */
+table {
+	margin: 20px auto;
+	border-spacing: 0px;
+	width: 90%;
+	border-collapse: collapse;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+td, th {
+	border-bottom: 1px solid #256d49; /* Slightly darker green */
+	padding: 10px;
+	text-align: left;
+}
+
+td {
+	background-color: #eaf2e0; /* Lightened background for table rows */
+}
+
+th {
+	background-color: #2e8b57;
+	color: #ffffff;
+}
+
+/* forms */
+form {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	grid-gap: 1em 0.5em;
+	margin: 20px auto;
+	width: 90%;
+}
+
+label {
+	grid-column: 1 / 2;
+	text-align: right;
+	font-weight: bold;
+	color: #2e8b57; /* Updated form label color */
+}
+
+input, button, select, textarea {
+	grid-column: 2 / 3;
+	padding: 10px;
+	border: 1px solid #c0d6c3; /* Subtle border */
+	border-radius: 4px;
+	background-color: #f5f7fa;
+}
+
+textarea {
+	height: 100px;
+	resize: vertical;
+}
+
+/* button styles */
+button {
+	background-color: #2e8b57;
+	color: #ffffff;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: #256d49; /* Slightly darker hover effect */
+}
+
+/* colors */
+th, a.nav, legend, label {
+	color: #2e8b57; /* Updated dark green tone */
+}
+
+h1, button {
+	background-color: #2e8b57; /* Dark green for header and buttons */
+	color: white;
+}
+
+td, th {
+	border-color: #256d49; /* Softer green border color for table rows */
+}
