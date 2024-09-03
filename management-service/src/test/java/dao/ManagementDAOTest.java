@@ -69,8 +69,8 @@ class ManagementDAOTest {
         property1 = new Property("Property 1", "Address 1", tenant1, manager1);
         property2 = new Property("Property 2", "Address 2", tenant2, manager1);
 
-        request1 = new Request("R001", "Request 1", "Description 1", true, tenant1, false);
-        request2 = new Request("R002", "Request 2", "Description 2", false, tenant2, false);
+        request1 = new Request( "Request 1", "Description 1", true, tenant1, false, property1);
+        request2 = new Request( "Request 2", "Description 2", false, tenant2, false, property2);
 
         management1 = new Management("Job 1", "Description 1", property1, request1, "Pending", LocalDateTime.MAX);
 
