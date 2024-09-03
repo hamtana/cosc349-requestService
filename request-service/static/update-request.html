@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/external/vue.global.js"></script>
+    <script src="js/external/vuex.global.js"></script>
+    <script src="js/external/vuex-persistedstate.js"></script>
+    <script src="js/external/axios.js"></script>
+    <title>Update Request</title>
+</head>
+<body>
+<main>
+    <navmenu></navmenu>
+    <h1>Update Request</h1>
+
+    <fieldset>
+        <legend>Request Details</legend>
+
+
+        <form @submit.prevent="updateRequest()">
+            <label>Name:</label><input type="text" v-model="request.name" required/>
+            <label>Description:</label><input type="text" v-model="request.description" required/>
+            <label>Urgent:</label><input type="checkbox" v-model="request.urgent" required/>
+            <label>Completed:</label><input type="checkbox" v-model="request.completed"/>
+            <button type="submit">Add Request</button>
+            <button @submit.prevent="deleteRequest()">Delete Request</button>
+
+        </form>
+    </fieldset>
+    <a class="nav" href="view-requests.html">Back to Requests</a>
+</main>
+<script type="module" src="js/update-request.js"></script>
+</body>
+</html>

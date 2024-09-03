@@ -24,8 +24,7 @@ const app = Vue.createApp({
         if (this.tenant) {
             this.request.tenant = this.tenant;
         }
-
-
+        this.fetchPropertyDetails()
     },
 
     methods: {
@@ -40,9 +39,6 @@ const app = Vue.createApp({
                                 const propertyDetails = response.data;
                                 console.log('Fetched property details:', propertyDetails);
                                 this.property = propertyDetails;
-                            })
-                            .catch(error => {
-                                console.error("Error fetching property details:", error);
                             });
                     }
                 },
@@ -59,15 +55,12 @@ const app = Vue.createApp({
                   return;
              }
 
-            await this.fetchPropertyDetails();
-
             if (this.property && this.property.address) {
                         this.request.property = this.property; // Assign property address to the request
                     } else {
                         alert("Property details could not be fetched");
                         return;
                     }
-
 
             axios.post(requestApi, this.request)
                     .then(() => {
