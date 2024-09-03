@@ -16,6 +16,10 @@
 
     <a class="nav" href="add-request.html">Add Request</a>
 
+    <div>
+        <h3>Property: {{property.address}}</h3>
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -24,7 +28,6 @@
             <th>Description</th>
             <th>Urgent </th>
             <th>Completed</th>
-            <th>Property</th>
             <th>Update</th>
         </tr>
         </thead>
@@ -35,7 +38,6 @@
             <td>{{request.description}}</td>
             <td>{{request.urgent}}</td>
             <td>{{request.completed}}</td>
-            <td>{{request.property.address}}</td>
             <td><button @click.prevent="updateRequest(request)">Update</button></td>
         </tr>
         </tbody>

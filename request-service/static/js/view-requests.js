@@ -6,7 +6,8 @@ var propertiesApi = (username) => `/api/properties/tenant/${username}`;
 const app = Vue.createApp({
     data() {
         return {
-            requests: []
+            requests: [],
+            property: new Object()
         };
     },
 
@@ -20,6 +21,7 @@ const app = Vue.createApp({
     mounted() {
         // Call the method to get requests by tenant
         this.getRequestByTenant();
+        this.fetchPropertyDetails();
     },
 
     methods: {
@@ -33,8 +35,6 @@ const app = Vue.createApp({
                         // Store response in requests model
                         this.requests = response.data;
 
-                        // Fetch property details using tenant username
-                        this.fetchPropertyDetails();
                     })
                     .catch(error => {
                         console.error(error);
@@ -55,9 +55,7 @@ const app = Vue.createApp({
                         console.log('Fetched property details:', propertyDetails);
 
                         // Update each request with the fetched property details
-                        this.requests.forEach(request => {
-                            request.property = propertyDetails;
-                        });
+                        this.property = propertyDetails;
                     })
                     .catch(error => {
                         console.error("Error fetching property details:", error);

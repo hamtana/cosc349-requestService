@@ -11,6 +11,6 @@ INSERT INTO Property (name, address, tenant_username, manager_username) VALUES
 ('Green Villa', '123 Elm St', 'Bob', 'alicej');
 
 -- Insert data into Request table
-INSERT INTO Request (id, name, description, urgent, tenant_username, property_address) VALUES
-('R001', 'Leaky Faucet', 'The kitchen faucet is leaking and needs urgent repair.', TRUE, 'Bob', '123 Elm St'),
-('R002', 'Broken Window', 'The living room window is broken and needs replacement.', FALSE, 'Bob', '123 Elm St');
+INSERT INTO Request (name, description, urgent, tenant_username, property_address) VALUES
+('Leaky Faucet', 'The kitchen faucet is leaking and needs urgent repair.', TRUE, 'Bob', '123 Elm St'),
+('Broken Window', 'The living room window is broken and needs replacement.', FALSE, 'Bob', '123 Elm St');
