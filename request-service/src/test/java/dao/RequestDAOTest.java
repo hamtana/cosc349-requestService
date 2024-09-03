@@ -54,7 +54,7 @@ public class RequestDAOTest {
 
         manager = new Manager( "Steve", "Jobs", "020321456", "steve", "password");
         tenant = new Tenant("John", "Doe", "020321456", "john", "password");
-        property = new Property("The White House", "12 North Rd", tenant, manager);
+        property = new Property("The White House", "12 North Rd", tenant.getUsername(), manager);
 
         request1 = new Request("Broken Toilet", "The toilet is broken", true, tenant, false, property);
         request2 = new Request("Broken Window", "The window is broken", false, tenant, false, property);
