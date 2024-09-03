@@ -8,7 +8,6 @@ import io.jooby.Jooby;
 import io.jooby.ServerOptions;
 import io.jooby.gson.GsonModule;
 import io.jooby.StatusCode;
-import java.nio.file.Paths;
 
 public class Server extends Jooby {
 

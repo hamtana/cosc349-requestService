@@ -1,7 +1,6 @@
 package dao;
 
 import domain.Manager;
-import domain.Tenant;
 import helpers.Argon2Helper;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;

@@ -7,7 +7,7 @@
     <script src="js/external/vuex.global.js"></script>
     <script src="js/external/vuex-persistedstate.js"></script>
     <script src="js/external/axios.js"></script>
-    <title>Create Customer Account</title>
+    <title>Add New Request</title>
 </head>
 <body>
 <main>
@@ -24,7 +24,6 @@
             <label>Description:</label><input type="text" v-model="request.description" required/>
             <label>Urgent:</label><input type="checkbox" v-model="request.urgent" required/>
             <label>Completed:</label><input type="checkbox" v-model="request.completed"/>
-            <label>Property Address:</label><input type="text" v-model="request.property" required/>
             <button type="submit">Add Request</button>
 
 

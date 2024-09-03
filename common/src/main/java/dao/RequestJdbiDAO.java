@@ -4,7 +4,6 @@ import domain.Request;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
-import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -20,9 +19,9 @@ public interface RequestJdbiDAO extends RequestDAO{
     @RegisterBeanMapper(Request.class)
     public Collection<Request> getRequestByTenant(@Bind("tenant") String username);
 
-    @SqlQuery("SELECT * FROM Request WHERE id = :id")
+    @SqlQuery("SELECT * FROM Request WHERE name = :name")
     @RegisterBeanMapper(Request.class)
-    public Request getRequestById(@Bind("id") String id);
+    public Request getRequestByName(@Bind("name") String name);
 
 
     @SqlUpdate("INSERT INTO Request (id, name, description, urgent, tenant_username, completed, property_address) " +
@@ -34,7 +33,7 @@ public interface RequestJdbiDAO extends RequestDAO{
             "tenant_username = :tenant.username, property_address = :property.address, completed = :completed WHERE id = :id")
     public void updateRequest(@BindBean Request request);
 
-    @SqlUpdate("DELETE FROM Request WHERE id = :id")
+    @SqlUpdate("DELETE FROM Request WHERE name = :name")
     public void deleteRequest(@BindBean Request request);
 }
 

@@ -56,10 +56,10 @@ public class RequestDAOTest {
         tenant = new Tenant("John", "Doe", "020321456", "john", "password");
         property = new Property("The White House", "12 North Rd", tenant, manager);
 
-        request1 = new Request("BToilet","Broken Toilet", "The toilet is broken", true, tenant, false, property);
-        request2 = new Request("BWindow","Broken Window", "The window is broken", false, tenant, false, property);
-        request3 = new Request("BDoor","Broken Door", "The door is broken", true, tenant, false, property);
-        request4 = new Request("BRoof","Broken Roof", "The roof is broken", false, tenant, false,property);
+        request1 = new Request("Broken Toilet", "The toilet is broken", true, tenant, false, property);
+        request2 = new Request("Broken Window", "The window is broken", false, tenant, false, property);
+        request3 = new Request("Broken Door", "The door is broken", true, tenant, false, property);
+        request4 = new Request("Broken Roof", "The roof is broken", false, tenant, false,property);
 
         //Add tests to the requestDAO
         requestDAO.createRequest(request1);
@@ -104,9 +104,9 @@ public class RequestDAOTest {
 
     @Test
     void getRequestById(){
-        assertThat(requestDAO.getRequestById(request1.getId()), is(request1));
-        assertThat(requestDAO.getRequestById(request2.getId()), is(request2));
-        assertThat(requestDAO.getRequestById(request3.getId()), is(request3));
+        assertThat(requestDAO.getRequestByName(request1.getName()), is(request1));
+        assertThat(requestDAO.getRequestByName(request2.getName()), is(request2));
+        assertThat(requestDAO.getRequestByName(request3.getId()), is(request3));
     }
 
     @Test

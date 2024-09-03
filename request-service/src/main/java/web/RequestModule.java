@@ -34,7 +34,9 @@ public class RequestModule extends Jooby {
         post("/api/requests", ctx -> {
             Request request = ctx.body().to(Request.class);
             Tenant tenant = ctx.body().to(Tenant.class);
+            Property property = ctx.body().to(Property.class);
             request.setTenant(tenant);
+            request.setProperty(property);
             dao.createRequest(request);
             return ctx.send(StatusCode.CREATED);
         });

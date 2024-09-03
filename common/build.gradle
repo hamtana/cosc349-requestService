@@ -24,6 +24,7 @@ dependencies {
 	implementation group: "org.jdbi", name: "jdbi3-sqlobject", version: jdbiVer;
 	implementation group: "com.zaxxer", name: "HikariCP", version: "5.0.1";
 		implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.70'
+
 	implementation group: 'de.mkammerer', name: 'argon2-jvm', version: '2.1';
 	
 	//** testing ** //

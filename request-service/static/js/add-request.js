@@ -1,12 +1,14 @@
 /* global Vue, axios */
 var requestApi = '/api/requests';
+var propertiesApi = (username) => `/api/properties/tenant/${username}`;
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models map (comma separated key/value pairs)
-            request: new Object()
+            request: new Object(),
+            property : new Object()
         };
     },
 
@@ -28,12 +30,29 @@ const app = Vue.createApp({
 
     methods: {
         // comma separated function declarations
+
+                // Function to fetch property details using tenant username
+        fetchPropertyDetails() {
+            if (this.tenant && this.tenant.username) {
+                axios.get(propertiesApi(this.tenant.username))
+                     .then(response => {
+                            // Assuming the property details are the same for all requests
+                                const propertyDetails = response.data;
+                                console.log('Fetched property details:', propertyDetails);
+                                this.property = propertyDetails;
+                            })
+                            .catch(error => {
+                                console.error("Error fetching property details:", error);
+                            });
+                    }
+                },
         addRequest() {
         // Ensure that urgent and completed are always boolean values
             this.request.urgent = !!this.request.urgent;
             this.request.completed = !!this.request.completed;
+            this.fetchPropertyDetails();
 
-            axios.post(requestApi, this.request, this.tenant)
+            axios.post(requestApi, this.request, this.tenant, this.property)
                     .then(() => {
                         window.location = 'view-requests.html';
                     })
@@ -41,6 +60,7 @@ const app = Vue.createApp({
                         alert(error.response.data.message);
                     });
         }
+
 
     },
 

@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS Property (
 
 -- Create Table for the Request Class
 CREATE TABLE IF NOT EXISTS Request (
-    id VARCHAR(10) PRIMARY KEY,
-    name VARCHAR(50),
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL,
     description VARCHAR(500),
     urgent BOOLEAN,
     tenant_username VARCHAR(50) NOT NULL,

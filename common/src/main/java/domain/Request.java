@@ -24,8 +24,7 @@ public class Request {
     public Request() {
     }
 
-    public Request(String id, String name, String description, boolean urgent, Tenant tenant, boolean completed, Property property) {
-        this.id = id;
+    public Request(String name, String description, boolean urgent, Tenant tenant, boolean completed, Property property) {
         this.name = name;
         this.description = description;
         this.urgent = urgent;
@@ -93,7 +92,7 @@ public class Request {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -109,9 +108,10 @@ public class Request {
             return false;
         }
         final Request other = (Request) obj;
-        return Objects.equals(this.id, other.id);
+        return Objects.equals(this.name, other.name);
     }
 
+    
 
     
     
