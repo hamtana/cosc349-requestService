@@ -6,17 +6,11 @@ package dao;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import domain.Manager;
-import domain.Property;
 import domain.Request;
-import domain.Tenant;
-import org.checkerframework.checker.interning.qual.EqualsMethod;
 
-import javax.print.attribute.IntegerSyntax;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
@@ -71,8 +65,8 @@ public class RequestCollectionsDAO implements RequestDAO {
         return requestsByTenant.get(username);
     }
 
-    public Request getRequestById(String id){
-        return requests.get(id);
+    public Request getRequestByName(String name){
+        return requests.get(name);
     }
 
 

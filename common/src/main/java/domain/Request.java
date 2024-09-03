@@ -19,17 +19,18 @@ public class Request {
     private Boolean urgent;
     private Tenant tenant; 
     private Boolean completed;
+    private Property property;
 
     public Request() {
     }
 
-    public Request(String id, String name, String description, boolean urgent, Tenant tenant, boolean completed) {
-        this.id = id;
+    public Request(String name, String description, boolean urgent, Tenant tenant, boolean completed, Property property) {
         this.name = name;
         this.description = description;
         this.urgent = urgent;
         this.tenant = tenant;
         this.completed = completed;
+        this.property = property;
     }
 
     public String getId() {
@@ -80,10 +81,18 @@ public class Request {
         this.completed = completed;
     }
 
+    public Property getProperty() {
+        return property;
+    }
+
+    public void setProperty(Property property) {
+        this.property = property;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -99,9 +108,10 @@ public class Request {
             return false;
         }
         final Request other = (Request) obj;
-        return Objects.equals(this.id, other.id);
+        return Objects.equals(this.name, other.name);
     }
 
+    
 
     
     

@@ -49,6 +49,27 @@ public class JdbiDAOFactory {
         return JDBI.onDemand(PropertyJdbiDAO.class);
     }
 
+    public static RequestDAO getRequestDAO() {
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(RequestJdbiDAO.class);
+    }
+
+    public static TenantDAO getTenantDAO() {
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(TenantJdbiDAO.class);
+    }
+
+    public static ManagementDAO getManagementDAO() {
+        if (HIKARI_DATA_SOURCE == null) {
+            initialisePool();
+        }
+        return JDBI.onDemand(ManagementJdbiDAO.class);
+    }
+
     public static Jdbi getJdbi() {
         if (HIKARI_DATA_SOURCE == null) {
             initialisePool();

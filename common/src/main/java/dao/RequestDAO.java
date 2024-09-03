@@ -7,7 +7,6 @@ package dao;
 import domain.Request;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  *
@@ -19,7 +18,7 @@ public interface RequestDAO {
 
     Collection<Request> getRequestByTenant(String username);
 
-    Request getRequestById(String id);
+    Request getRequestByName(String name);
 
     Integer createRequest(Request request);
 

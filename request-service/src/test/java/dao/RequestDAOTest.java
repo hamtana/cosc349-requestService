@@ -37,6 +37,12 @@ public class RequestDAOTest {
         try (Handle handle = JdbiDAOFactory.getJdbi().open()) {
             handle.execute("DELETE FROM Tenant WHERE username = 'john'");
             handle.execute("INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password) VALUES ('John', 'Doe', '020321456', 'john', 'password')");
+
+            handle.execute("DELETE FROM Manager WHERE username = 'steve'");
+            handle.execute("INSERT INTO Manager (firstName, lastName, phoneNumber, username, password) VALUES ('Steve', 'Jobs', '020321456', 'steve', 'password')");
+
+            handle.execute("DELETE FROM Property WHERE address = '12 North Rd'");
+            handle.execute("INSERT INTO Property (name, address, tenant_username, manager_username) VALUES ('The White House', '12 North Rd', 'john', 'steve')");
         }
     }
 
@@ -48,12 +54,12 @@ public class RequestDAOTest {
 
         manager = new Manager( "Steve", "Jobs", "020321456", "steve", "password");
         tenant = new Tenant("John", "Doe", "020321456", "john", "password");
-//      property = new Property("0001", "The White House", "12 North Rd", tenant, manager);
+        property = new Property("The White House", "12 North Rd", tenant, manager);
 
-        request1 = new Request("BToilet","Broken Toilet", "The toilet is broken", true, tenant, false);
-        request2 = new Request("BWindow","Broken Window", "The window is broken", false, tenant, false);
-        request3 = new Request("BDoor","Broken Door", "The door is broken", true, tenant, false);
-        request4 = new Request("BRoof","Broken Roof", "The roof is broken", false, tenant, false);
+        request1 = new Request("Broken Toilet", "The toilet is broken", true, tenant, false, property);
+        request2 = new Request("Broken Window", "The window is broken", false, tenant, false, property);
+        request3 = new Request("Broken Door", "The door is broken", true, tenant, false, property);
+        request4 = new Request("Broken Roof", "The roof is broken", false, tenant, false,property);
 
         //Add tests to the requestDAO
         requestDAO.createRequest(request1);
@@ -98,9 +104,9 @@ public class RequestDAOTest {
 
     @Test
     void getRequestById(){
-        assertThat(requestDAO.getRequestById(request1.getId()), is(request1));
-        assertThat(requestDAO.getRequestById(request2.getId()), is(request2));
-        assertThat(requestDAO.getRequestById(request3.getId()), is(request3));
+        assertThat(requestDAO.getRequestByName(request1.getName()), is(request1));
+        assertThat(requestDAO.getRequestByName(request2.getName()), is(request2));
+        assertThat(requestDAO.getRequestByName(request3.getId()), is(request3));
     }
 
     @Test

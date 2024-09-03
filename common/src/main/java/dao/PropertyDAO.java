@@ -18,4 +18,6 @@ public interface PropertyDAO {
 
     Collection<Property> getPropertiesByManagerUsername(String username);
 
+    Property getPropertyByTenantUsername(String username);
+
 }

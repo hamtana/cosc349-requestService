@@ -1,12 +1,14 @@
 /* global Vue, axios */
 var requestApi = '/api/requests';
+var propertiesApi = (username) => `/api/properties/tenant/${username}`;
 
 const app = Vue.createApp({
 
     data() {
         return {
             // models map (comma separated key/value pairs)
-            request: new Object()
+            request: new Object(),
+            property : new Object()
         };
     },
 
@@ -28,12 +30,46 @@ const app = Vue.createApp({
 
     methods: {
         // comma separated function declarations
-        addRequest() {
+
+                // Function to fetch property details using tenant username
+        async fetchPropertyDetails() {
+            if (this.tenant && this.tenant.username) {
+                axios.get(propertiesApi(this.tenant.username))
+                     .then(response => {
+                            // Assuming the property details are the same for all requests
+                                const propertyDetails = response.data;
+                                console.log('Fetched property details:', propertyDetails);
+                                this.property = propertyDetails;
+                            })
+                            .catch(error => {
+                                console.error("Error fetching property details:", error);
+                            });
+                    }
+                },
+        async addRequest() {
         // Ensure that urgent and completed are always boolean values
             this.request.urgent = !!this.request.urgent;
             this.request.completed = !!this.request.completed;
 
-            axios.post(requestApi, this.request, this.tenant)
+         // Make sure tenant and property details are available
+             if (this.tenant && this.tenant.username) {
+                   this.request.tenant = this.tenant;  // Set tenant's username
+             } else {
+                  alert("Tenant is not available");
+                  return;
+             }
+
+            await this.fetchPropertyDetails();
+
+            if (this.property && this.property.address) {
+                        this.request.property = this.property; // Assign property address to the request
+                    } else {
+                        alert("Property details could not be fetched");
+                        return;
+                    }
+
+
+            axios.post(requestApi, this.request)
                     .then(() => {
                         window.location = 'view-requests.html';
                     })
@@ -41,6 +77,7 @@ const app = Vue.createApp({
                         alert(error.response.data.message);
                     });
         }
+
 
     },
 
