@@ -50,9 +50,9 @@ class PropertyDAOTest {
 
         Manager manager1 = new Manager("Jane", "Smith", "987654321", "janesmith", "password");
 
-        property1 = new Property("Property 1", "Address 1", tenant1, manager1);
-        property2 = new Property("Property 2", "Address 2", tenant2, manager1);
-        property3 = new Property("Property 3", "Address 3", tenant3, manager1);
+        property1 = new Property("Property 1", "Address 1", tenant1.getUsername(), manager1);
+        property2 = new Property("Property 2", "Address 2", tenant2.getUsername(), manager1);
+        property3 = new Property("Property 3", "Address 3", tenant3.getUsername(), manager1);
 
         propertyDAO.createProperty(property1);
         propertyDAO.createProperty(property2);

@@ -66,8 +66,8 @@ class ManagementDAOTest {
 
         manager1 = new Manager("Jane", "Smith", "987654321", "janesmith", "password");
 
-        property1 = new Property("Property 1", "Address 1", tenant1, manager1);
-        property2 = new Property("Property 2", "Address 2", tenant2, manager1);
+        property1 = new Property("Property 1", "Address 1", tenant1.getUsername(), manager1);
+        property2 = new Property("Property 2", "Address 2", tenant2.getUsername(), manager1);
 
         request1 = new Request( "Request 1", "Description 1", true, tenant1, false, property1);
         request2 = new Request( "Request 2", "Description 2", false, tenant2, false, property2);

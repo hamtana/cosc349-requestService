@@ -2,8 +2,8 @@ package dao;
 
 public class DAOFactory {
     public static ManagerDAO getManagerDAO() {
-//        return JdbiDAOFactory.getManagerDAO();
-        return new ManagerCollectionsDAO();
+        return JdbiDAOFactory.getManagerDAO();
+//        return new ManagerCollectionsDAO();
     }
 
     public static RequestDAO getRequestDAO() {

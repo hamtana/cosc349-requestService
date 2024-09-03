@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/external/vue.global.js"></script>
+    <script src="js/external/vuex.global.js"></script>
+    <script src="js/external/vuex-persistedstate.js"></script>
+    <script src="js/external/axios.js"></script>
+    <title>View Properties</title>
+</head>
+<body>
+<main>
+    <navmenu></navmenu>
+    <h1>Properties</h1>
+
+    <a class="nav" href="add-property.html">Add Property</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Tenant </th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="property in properties">
+            <td>{{property.id}}</td>
+            <td>{{property.name}}</td>
+            <td>{{property.address}}</td>
+            <td>{{property.tenantUsername}}</td>
+            <td><button @click.prevent="manageProperty(property)">Manage</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="nav" href="index.html">Back to Home</a>
+</main>
+<script type="module" src="js/view-properties.js"></script>
+</body>
+</html>

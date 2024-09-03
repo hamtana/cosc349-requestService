@@ -7,7 +7,7 @@ export const dataStore = Vuex.createStore({
             manager: null,
 
             // The request that is being made/edited
-            request: null
+            property: null
         };
     },
 
@@ -18,8 +18,8 @@ export const dataStore = Vuex.createStore({
             state.manager = manager;
         },
 
-        selectRequest(state, request) {
-            state.request = request;
+        selectProperty(state, property) {
+            state.property = property;
         }
     },
 

@@ -21,7 +21,7 @@ const app = Vue.createApp({
         addManager() {
             axios.post(managerApi, this.manager)
                 .then(response => {
-                    window.location.href = 'view-properties.html';
+                    window.location.href = 'manager-login.html';
                 })
                 .catch(error => {
                     console.log(error);

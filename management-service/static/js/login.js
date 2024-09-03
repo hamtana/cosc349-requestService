@@ -23,7 +23,7 @@ const app = Vue.createApp({
             .then(response => {
                 this.manager = response.data;
                 dataStore.commit("signIn", this.manager);
-                window.location = 'view-requests.html';
+                window.location = 'view-properties.html';
                 this.message = "Welcome " + username;
             })
             .catch(error => {

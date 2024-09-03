@@ -16,6 +16,7 @@ public class Server extends Jooby {
     public Server(){
         install(new GsonModule());
         mount(new ManagerModule(managerDAO));
+        mount(new PropertyModule(propertyDAO));
 
         error(StatusCode.SERVER_ERROR, (ctx, cause, code) -> {
             ctx.getRouter().getLog().error(cause.getMessage(), cause);

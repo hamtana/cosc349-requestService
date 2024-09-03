@@ -1,9 +1,11 @@
 package dao;
 
 import domain.Property;
+import domain.Tenant;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;
+import org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -46,4 +48,5 @@ public interface PropertyJdbiDAO extends PropertyDAO {
     @SqlQuery("SELECT * FROM Property WHERE tenant_username = :username")
     @RegisterBeanMapper(Property.class)
     Property getPropertyByTenantUsername(@Bind("username") String username);
+
 }
