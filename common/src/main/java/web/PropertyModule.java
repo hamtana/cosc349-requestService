@@ -3,6 +3,7 @@ package web;
 import dao.PropertyDAO;
 import domain.Property;
 import io.jooby.Jooby;
+import io.jooby.StatusCode;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,6 +36,12 @@ public class PropertyModule extends Jooby {
                     return properties;
 
                 }
+         });
+
+         post("/api/properties", ctx -> {
+             Property property = ctx.body().to(Property.class);
+             dao.createProperty(property);
+             return ctx.send(StatusCode.CREATED);
          });
 
 

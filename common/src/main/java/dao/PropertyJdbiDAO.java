@@ -16,12 +16,12 @@ public interface PropertyJdbiDAO extends PropertyDAO {
     @Override
     @SqlUpdate("INSERT INTO Property" +
             "(name, address, tenant_username, manager_username) " +
-            "VALUES (:name, :address, :tenant.username, :manager.username)")
+            "VALUES (:name, :address, :tenantUsername, :manager.username)")
     void createProperty(@BindBean Property property);
 
     @Override
     @SqlUpdate("UPDATE Property SET name = :name, address = :address," +
-            " tenant_username = :tenant.username, " +
+            " tenant_username = :tenantUsername, " +
             "manager_username = :manager.username WHERE address = :address")
     void updateProperty(@BindBean Property property);
 
