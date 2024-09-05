@@ -19,14 +19,13 @@
 
 
         <form @submit.prevent="updateRequest()">
-            <label>Name:</label><input type="text" v-model="request.name" required/>
-            <label>Description:</label><input type="text" v-model="request.description" required/>
-            <label>Urgent:</label><input type="checkbox" v-model="request.urgent" required/>
-            <label>Completed:</label><input type="checkbox" v-model="request.completed"/>
-            <button type="submit">Add Request</button>
-            <button @submit.prevent="deleteRequest()">Delete Request</button>
-
+            <label>Name:</label><input type="text" v-model="updatedRequest.name" readonly/>
+            <label>Description:</label><input type="text" v-model="updatedRequest.description" required/>
+            <label>Urgent:</label><input type="checkbox" v-model="updatedRequest.urgent" />
+            <label>Completed:</label><input type="checkbox" v-model="updatedRequest.completed"/>
+            <button type="submit">Update Request</button>
         </form>
+        <button @click="deleteRequest()">Delete Request</button>
     </fieldset>
     <a class="nav" href="view-requests.html">Back to Requests</a>
 </main>

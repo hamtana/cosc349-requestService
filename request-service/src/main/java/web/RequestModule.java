@@ -31,6 +31,27 @@ public class RequestModule extends Jooby {
         });
 
 
+        //Pattern to update a request
+        put("/api/requests/{name}", ctx -> {
+            String name = ctx.path("name").value();
+            Request request = ctx.body().to(Request.class);
+            dao.updateRequest(request);
+            return ctx.send(StatusCode.OK);
+        });
+
+        //Pattern to delete a request
+        delete("/api/requests/{name}", ctx -> {
+            String name = ctx.path("name").value();
+            Request request = dao.getRequestByName(name);
+            if (request == null){
+                return ctx.send(StatusCode.NOT_FOUND);
+            } else {
+                dao.deleteRequest(request);
+                return ctx.send(StatusCode.OK);
+            }
+        });
+
+
         post("/api/requests", ctx -> {
             Request request = ctx.body().to(Request.class);
 //            Tenant tenant = ctx.body().to(Tenant.class);

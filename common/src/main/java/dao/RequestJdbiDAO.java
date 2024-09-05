@@ -30,7 +30,7 @@ public interface RequestJdbiDAO extends RequestDAO{
 
 
     @SqlUpdate("UPDATE Request SET description = :description, urgent = :urgent, " +
-            "tenant_username = :tenant.username, property_address = :property.address, completed = :completed WHERE name = :name")
+            "completed = :completed WHERE name = :name")
     public void updateRequest(@BindBean Request request);
 
     @SqlUpdate("DELETE FROM Request WHERE name = :name")
