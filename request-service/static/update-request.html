@@ -17,7 +17,6 @@
     <fieldset>
         <legend>Request Details</legend>
 
-
         <form @submit.prevent="updateRequest()">
             <label>Name:</label><input type="text" v-model="updatedRequest.name" readonly/>
             <label>Description:</label><input type="text" v-model="updatedRequest.description" required/>

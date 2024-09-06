@@ -30,6 +30,12 @@ const app = Vue.createApp({
                 axios.get(propertiesApiManager(this.manager.username))
                     .then(response => {
                         // Store response in requests model
+                        // if the response contains no properties, redirect to the add-properties page
+                        if (!Array.isArray(response.data)) {
+                            window.location = "add-property.html";
+                            alert("You have no properties. Please add a property.");
+                            return ;
+                        }
                         this.properties = response.data;
                         console.log(this.properties);
 

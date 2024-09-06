@@ -21,8 +21,8 @@ public interface PropertyJdbiDAO extends PropertyDAO {
 
     @Override
     @SqlUpdate("UPDATE Property SET name = :name, address = :address," +
-            " tenant_username = :tenantUsername, " +
-            "manager_username = :manager.username WHERE address = :address")
+            " tenant_username = :tenantUsername " +
+            "WHERE address = :address")
     void updateProperty(@BindBean Property property);
 
     @Override

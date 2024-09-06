@@ -24,9 +24,9 @@ public class PropertyModule extends Jooby {
        });
 
        //Retrieve properties by manager
-         get("/api/properties/manager/{username}", ctx -> {
-              String username = ctx.path("username").value();
-              Collection<Property> properties = dao.getPropertiesByManagerUsername(username);
+       get("/api/properties/manager/{username}", ctx -> {
+           String username = ctx.path("username").value();
+           Collection<Property> properties = dao.getPropertiesByManagerUsername(username);
                 if(properties.isEmpty()){
                     return ctx.send("No properties found for manager: " + username);
                 } else {
@@ -36,13 +36,26 @@ public class PropertyModule extends Jooby {
                     return properties;
 
                 }
-         });
+       });
 
-         post("/api/properties", ctx -> {
+       put("/api/properties/{address}", ctx -> {
+             Property property = ctx.body().to(Property.class);
+             dao.updateProperty(property);
+             return ctx.send(StatusCode.OK);
+       });
+
+       delete("/api/properties/{address}", ctx -> {
+             String address = ctx.path("address").value();
+             Property property = dao.getPropertyByAddress(address);
+             dao.deleteProperty(property);
+             return ctx.send(StatusCode.OK);
+       });
+
+       post("/api/properties", ctx -> {
              Property property = ctx.body().to(Property.class);
              dao.createProperty(property);
              return ctx.send(StatusCode.CREATED);
-         });
+       });
 
 
 
