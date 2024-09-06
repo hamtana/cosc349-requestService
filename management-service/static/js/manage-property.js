@@ -22,6 +22,11 @@ const app = Vue.createApp({
         },
 
     mounted() {
+
+       // check if session storage is working...
+       console.log("Manager in Vuex:", this.manager);
+       console.log("Property in Vuex:", this.property);
+
         // semicolon separated statements
         if (this.manager) {
             this.property.manager = this.manager;
@@ -66,7 +71,7 @@ const app = Vue.createApp({
         },
 
         requestWork(){
-            //not implemented yet.
+            window.location = "management.html";
         }
 
 

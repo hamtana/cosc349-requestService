@@ -9,18 +9,16 @@ public class Management {
     private String name;
     private String description;
     private Property property;
-    private Request request;
     private String status;
     private transient LocalDateTime date;
 
     public Management() {
     }
 
-    public Management(String name, String description, Property property, Request request, String status, LocalDateTime date) {
+    public Management(String name, String description, Property property, String status, LocalDateTime date) {
         this.name = name;
         this.description = description;
         this.property = property;
-        this.request = request;
         this.status = status;
         this.date = date;
     }
@@ -73,11 +71,4 @@ public class Management {
         this.status = status;
     }
 
-    public Request getRequest() {
-        return request;
-    }
-
-    public void setRequest(Request request) {
-        this.request = request;
-    }
 }

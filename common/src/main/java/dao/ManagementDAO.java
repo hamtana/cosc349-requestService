@@ -12,6 +12,4 @@ public interface ManagementDAO {
 
     Management getJobByPropertyAddress(String address);
 
-    Management getJobByRequestId(String id);
-
 }

@@ -7,7 +7,8 @@ export const dataStore = Vuex.createStore({
             manager: null,
 
             // The request that is being made/edited
-            property: null
+            property: null,
+
         };
     },
 

@@ -6,7 +6,9 @@ import dao.PropertyDAO;
 import io.jooby.Jooby;
 import io.jooby.ServerOptions;
 import io.jooby.StatusCode;
+import io.jooby.handler.Cors;
 import io.jooby.gson.GsonModule;
+import io.jooby.handler.CorsHandler;
 
 public class Server extends Jooby {
 
@@ -15,8 +17,16 @@ public class Server extends Jooby {
 
     public Server(){
         install(new GsonModule());
+
+        Cors cors = new Cors()
+                .setOrigin("*")
+                .setMethods("GET", "POST", "PUT", "DELETE")
+                .setHeaders("*");
+        use(new CorsHandler(cors));
+
         mount(new ManagerModule(managerDAO));
         mount(new PropertyModule(propertyDAO));
+
 
         error(StatusCode.SERVER_ERROR, (ctx, cause, code) -> {
             ctx.getRouter().getLog().error(cause.getMessage(), cause);

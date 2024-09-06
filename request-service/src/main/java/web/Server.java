@@ -8,6 +8,8 @@ import io.jooby.Jooby;
 import io.jooby.ServerOptions;
 import io.jooby.gson.GsonModule;
 import io.jooby.StatusCode;
+import io.jooby.handler.Cors;
+import io.jooby.handler.CorsHandler;
 
 public class Server extends Jooby {
 
@@ -17,6 +19,14 @@ public class Server extends Jooby {
 
     public Server(){
         install(new GsonModule());
+
+        Cors cors = new Cors()
+                .setOrigin("*")
+                .setMethods("GET", "POST", "PUT", "DELETE")
+                .setHeaders("*");
+        use(new CorsHandler(cors));
+
+
         mount(new TenantModule(tenantDAO));
         mount(new RequestModule(requestDAO));
         mount(new PropertyModule(propertyDAO));

@@ -72,7 +72,7 @@ class ManagementDAOTest {
         request1 = new Request( "Request 1", "Description 1", true, tenant1, false, property1);
         request2 = new Request( "Request 2", "Description 2", false, tenant2, false, property2);
 
-        management1 = new Management("Job 1", "Description 1", property1, request1, "Pending", LocalDateTime.MAX);
+//        management1 = new Management("Job 1", "Description 1", property1, request1, "Pending", LocalDateTime.MAX);
 
         managementDAO.createJob(management1);
     }
