@@ -60,4 +60,28 @@ CREATE TABLE IF NOT EXISTS Management (
     CONSTRAINT FK_Request FOREIGN KEY (request_name) REFERENCES Request(name) ON DELETE CASCADE
 );
 
+--Dummy insert statements
 
+-- Insert into Manager
+INSERT INTO Manager (firstName, lastName, phoneNumber, username, password)
+VALUES
+('John', 'Doe', '1234567890', 'johndoe', 'hashed_password_1'),
+('Jane', 'Smith', '0987654321', 'janesmith', 'hashed_password_2');
+
+-- Insert into Tenant
+INSERT INTO Tenant (firstName, lastName, phoneNumber, username, password)
+VALUES
+('Alice', 'Brown', '1112223333', 'alicebrown', 'hashed_password_3'),
+('Bob', 'Johnson', '4445556666', 'bobjohnson', 'hashed_password_4');
+
+-- Insert into Property
+INSERT INTO Property (name, address, tenant_username, manager_username)
+VALUES
+('Green Apartments', '123 Elm St', 'alicebrown', 'johndoe'),
+('Sunset Villas', '456 Oak St', 'bobjohnson', 'janesmith');
+
+-- Insert into Request
+INSERT INTO Request (name, description, urgent, tenant_username, completed, property_address)
+VALUES
+('Leaky Faucet', 'The faucet in the kitchen is leaking', TRUE, 'alicebrown', FALSE, '123 Elm St'),
+('Broken Window', 'Window in the living room is broken', FALSE, 'bobjohnson', TRUE, '456 Oak St');
