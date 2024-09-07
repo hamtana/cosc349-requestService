@@ -21,4 +21,8 @@ public class DAOFactory {
         return JdbiDAOFactory.getPropertyDAO();
     }
 
+    public static ManagementDAO getManagementDAO() {
+        return JdbiDAOFactory.getManagementDAO();
+    }
+
 }

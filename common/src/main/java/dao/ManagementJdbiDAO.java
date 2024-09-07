@@ -11,13 +11,13 @@ public interface ManagementJdbiDAO extends ManagementDAO {
 
     @Override
     @SqlUpdate("INSERT INTO Management" +
-            "(name, description, property_address, status, date) " +
-            "VALUES (:name, :description, :property.address :status, :date)")
+            "(name, description, property_address, status, LOCAL_DATE_TIME) " +
+            "VALUES (:name, :description, :property.address, :status, :date)")
     void createJob(@BindBean Management management);
 
     @Override
     @SqlUpdate("UPDATE Management SET name = :name, description = :description," +
-            " status = :status, date = :date WHERE property_address = :property.address")
+            " status = :status, LOCAL_DATE_TIME = :date WHERE property_address = :property.address")
     void updateJob(@BindBean Management management);
 
     @Override

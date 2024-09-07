@@ -56,7 +56,8 @@ const app = Vue.createApp({
 
         createJob() {
             // Assign property to management.property
-            this.management.property = this.manageProperty;
+            this.management.property = this.property;
+            console.log(this.management);
             axios.post(managementApi, this.management)
                 .then(() => {
                     window.location = 'view-properties.html';

@@ -21,7 +21,7 @@
 
         <form @submit.prevent="createJob()">
             <label>Name:</label><input type="text" v-model="management.name" required/>
-            <label>Description:</label><input type="text" v-model="management.address"  required/>
+            <label>Description:</label><input type="text" v-model="management.description"  required/>
             <label>Status: </label><input type="text" v-model="management.status" required/>
             <label>Date: </label><input type="datetime-local" v-model="management.date" required/>
             <button type="submit">Create Job</button>

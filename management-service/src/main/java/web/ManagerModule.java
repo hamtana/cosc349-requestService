@@ -2,6 +2,7 @@ package web;
 
 import dao.ManagerDAO;
 import dao.TenantDAO;
+import domain.Management;
 import domain.Manager;
 import domain.Tenant;
 import helpers.Argon2Helper;
@@ -35,6 +36,8 @@ public class ManagerModule extends Jooby {
             return ctx.send(StatusCode.CREATED);
 
         });
+
+
 
 
     }

@@ -1,6 +1,7 @@
 package web;
 
 import dao.DAOFactory;
+import dao.ManagementDAO;
 import dao.ManagerDAO;
 import dao.PropertyDAO;
 import io.jooby.Jooby;
@@ -14,6 +15,8 @@ public class Server extends Jooby {
 
     private static final ManagerDAO managerDAO = DAOFactory.getManagerDAO();
     private static final PropertyDAO propertyDAO = DAOFactory.getPropertyDAO();
+    private static final ManagementDAO managementDAO = DAOFactory.getManagementDAO();
+
 
     public Server(){
         install(new GsonModule());
@@ -26,6 +29,7 @@ public class Server extends Jooby {
 
         mount(new ManagerModule(managerDAO));
         mount(new PropertyModule(propertyDAO));
+        mount(new ManagementModule(managementDAO));
 
 
         error(StatusCode.SERVER_ERROR, (ctx, cause, code) -> {
