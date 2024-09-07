@@ -8,7 +8,7 @@ Once the work request has been completed, the tenant can update the request, mar
 
 
 The management service provides functionality for managers to create an account, add a property and manage their properties.
-Managers will be able to see if there are requests for work and make requests for that to work to completed.
+Managers will be able to see the number requests from the tenant and make requests for that to work to be completed.
 
 Both the Request & Management service are served by a single container running a PostgreSQL database.
 
