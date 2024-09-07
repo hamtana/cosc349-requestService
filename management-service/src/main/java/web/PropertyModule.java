@@ -5,7 +5,6 @@ import domain.Property;
 import io.jooby.Jooby;
 import io.jooby.StatusCode;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class PropertyModule extends Jooby {
