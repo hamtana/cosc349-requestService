@@ -13,6 +13,7 @@ public class JdbiDAOFactory {
     //For running with docker.
     private static String dockerUri = "jdbc:postgresql://db:5432/cosc349_database";
 
+    //For running locally for testing.
     private static String jdbiUri = "jdbc:postgresql://localhost:1234/cosc349_database";
 
     private static HikariDataSource HIKARI_DATA_SOURCE;
