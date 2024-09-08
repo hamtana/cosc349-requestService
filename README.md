@@ -32,6 +32,11 @@ Use this login for the Tenant Service running on http://localhost:8080
 * Username: alicebrown
 * Password: test
 
+### To shut down the project
+1. Run **docker compose down**
+2. To remove the images - type **docker image pune <containerimageID>**
+3. To remove the volume (database storage) - type **docker volume ls** & then **docker volume rm <image-name>**
+
 #### Notes
 
 * To add a new property, there must be a tenant account made up in the tenant service in order to create the relationship between the two.
