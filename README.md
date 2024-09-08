@@ -12,6 +12,11 @@ Managers will be able to see the number requests from the tenant and make reques
 
 Both the Request & Management service containers are served by a database; a single container running a PostgreSQL.
 
+### Description of the Repository:
+Within the root of this repository is a build.gradle with dependencies to 3 other sub-projects, common, request-service and management-service. 
+The common directory contains all the Data Access objects & Domain classes. 
+While the request and management services each contain java web server code and information for the end-points for each service.
+
 ### To run the project follow these steps:
 1. clone the repository
 2. ensure you have docker desktop running.
