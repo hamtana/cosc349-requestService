@@ -24,11 +24,11 @@ While the request and management services each contain java web server code and 
 
 ### Once Docker containers are running 
 
-Use this login to get into the Manger service
+Use this login to get into the Manger service running on : http://localhost:8081
 * Username: johndoe
 * Password: test
 
-Use this login for the Tenant Service
+Use this login for the Tenant Service running on http://localhost:8080
 * Username: alicebrown
 * Password: test
 
