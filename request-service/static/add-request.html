@@ -21,7 +21,7 @@
         <form @submit.prevent="addRequest()">
             <label>Name:</label><input type="text" v-model="request.name" required/>
             <label>Description:</label><input type="text" v-model="request.description" required/>
-            <label>Urgent:</label><input type="checkbox" v-model="request.urgent" required/>
+            <label>Urgent:</label><input type="checkbox" v-model="request.urgent" />
             <label>Completed:</label><input type="checkbox" v-model="request.completed"/>
             <button type="submit">Add Request</button>
 
