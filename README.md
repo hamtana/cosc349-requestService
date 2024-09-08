@@ -20,5 +20,19 @@ While the request and management services each contain java web server code and 
 ### To run the project follow these steps:
 1. clone the repository
 2. ensure you have docker desktop running.
-3. Run the command **docker compose up** within the assignment1 directory. 
+3. Run the command **docker compose up** within the assignment1 directory.
+
+### Once Docker containers are running 
+
+Use this login to get into the Manger service
+* Username: johndoe
+* Password: test
+
+Use this login for the Tenant Service
+* Username: alicebrown
+* Password: test
+
+
+
+
 
