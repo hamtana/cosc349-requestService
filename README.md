@@ -32,7 +32,9 @@ Use this login for the Tenant Service running on http://localhost:8080
 * Username: alicebrown
 * Password: test
 
+#### Notes
 
+* To add a new property, there must be a tenant account made up in the tenant service in order to create the relationship between the two.
 
 
 
