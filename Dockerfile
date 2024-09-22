@@ -15,10 +15,10 @@ RUN \
 #USER gradle
 
 # Copy Required Directories
-COPY ../common /app/common
-COPY ../build.gradle ./
-COPY  ../settings.gradle ./
-COPY ../request-service /app/request-service
+COPY ./common /app/common
+COPY ./build.gradle ./
+COPY  ./settings.gradle ./
+COPY ./request-service /app/request-service
 
 # Shift to the Request Service Directory
 WORKDIR /app/request-service
